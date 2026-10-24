@@ -66,15 +66,18 @@ docs/
   PRODUCT_SPEC.md
 ```
 
-## Planned next work
+## Composable framework builder
 
-- Add a lockfile and CI checks, then verify build and typecheck in CI
-- Add complete curated POM templates per tool/language and improve the generator so POM toggles and framework choices affect the generated output consistently
-- Bundle all generated files into a downloadable ZIP
-- Add proper code syntax highlighting and full file tabs
-- Add persistent bookmarks/progress and optional Supabase sync
-- Expand elements/actions/E2E lessons with configuration, sample markup, test data, assertions, execution instructions, expected results, and troubleshooting
-- Add unit/integration tests for the generator and demo components
+Open `/framework-builder` from the dashboard. Choose the automation tool, language, project name, and base URL. Search/filter the atomic action library, select individual actions or batches, then assemble selected actions into a Page Object Model class and starter test/configuration files. Generated files can be previewed, copied, and downloaded individually.
+
+The output is a scaffold: add target-specific selectors, test data, scenario sequencing, assertions, and any marked extension-point implementations before running it. The hosted site does not execute generated browser scripts.
+
+## Next improvements
+
+- Add a ZIP bundle export and persistent saved framework recipes
+- Add curated end-to-end scenarios that automatically sequence selected POM methods
+- Add generator unit tests and run generated samples against a deterministic local demo
+- Add optional persistent progress and saved framework storage
 
 ## Architecture boundary
 
