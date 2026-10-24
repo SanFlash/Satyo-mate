@@ -3,7 +3,7 @@
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Check, Code2, Copy, Download, Layers3, Search, ShieldCheck, Sparkles, X } from 'lucide-react';
-import { actionCatalog, actionGroups, type ActionDefinition, type ActionKind } from '@/lib/action-catalog';
+import { actionCatalog, actionGroups, type ActionDefinition } from '@/lib/action-catalog';
 
 type Tool='Playwright'|'Selenium';
 type Language='TypeScript'|'JavaScript'|'Python';
