@@ -10,6 +10,8 @@ AutoLearn QA is a responsive learning workspace for web UI and end-to-end automa
 - Interactive local demos for login, dropdowns, dialogs, forms, tables, and tabs, plus lesson coverage for autocomplete, accordions, tooltips, toasts, pagination, sorting, date/time inputs, keyboard focus, iframes, Shadow DOM, responsive layouts, and more
 - Tool/language snippet switching
 - Expanded project generator selectors for 30+ component/scenario types and 20 action patterns, across all six tool-language combinations
+- A dedicated composable framework builder at `/framework-builder` with a searchable 50+ atomic-action library, action-group filters, bulk selection, and Page Object Model scaffold generation
+- Framework builder output includes page-object source, a composed test scaffold, setup/configuration files where supported, README, file preview, copy, and individual downloads
 - Individual generated-file downloads and copy controls
 - Vercel-compatible Next.js app structure
 
