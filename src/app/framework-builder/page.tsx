@@ -132,7 +132,7 @@ function methodBody(a:ActionDefinition,tool:Tool,lang:Language):string {
 
 function buildProject(tool:Tool,language:Language,selected:ActionDefinition[],baseUrl:string,projectName:string):FileEntry[]{
  const unique=selected.filter((a,i)=>selected.findIndex(b=>b.method===a.method)===i);
- const rawMethods=unique.map(a=>methodBody(a,tool,language)).join('\\n');
+ const rawMethods=unique.map(a=>methodBody(a,tool,language)).join('\n');
  const methods=language==='JavaScript'?rawMethods.replace(/: (string|number|unknown|RegExp|unknown\\[\\])/g,'').replace(/ as HTMLElement/g,''):rawMethods;
  const py=language==='Python', pw=tool==='Playwright', ext=py?'py':language==='TypeScript'?'ts':'js';
  const pagePath=py?'pages/generated_page.py':'pages/GeneratedPage.'+ext;
@@ -144,14 +144,14 @@ function buildProject(tool:Tool,language:Language,selected:ActionDefinition[],ba
   requirements='pytest>=8.0\npytest-playwright>=0.5\nplaywright>=1.48\n';
  } else if(pw) {
   if(language==='TypeScript') {
-   pageCode='import { expect, type Page } from "@playwright/test";\\n\\nexport class GeneratedPage {\\n  constructor(private readonly page: Page, private readonly baseUrl = '+q(baseUrl)+') {}\\n\\n'+methods+'}\\n';
-   configCode='import { defineConfig } from "@playwright/test";\\nexport default defineConfig({testDir:"./tests",use:{baseURL:'+q(baseUrl)+',trace:"retain-on-failure",screenshot:"only-on-failure"},reporter:[["list"],["html",{open:"never"}]]});\\n';
+   pageCode='import { expect, type Page } from "@playwright/test";\n\nexport class GeneratedPage {\n  constructor(private readonly page: Page, private readonly baseUrl = '+q(baseUrl)+') {}\n\n'+methods+'}\n';
+   configCode='import { defineConfig } from "@playwright/test";\nexport default defineConfig({testDir:"./tests",use:{baseURL:'+q(baseUrl)+',trace:"retain-on-failure",screenshot:"only-on-failure"},reporter:[["list"],["html",{open:"never"}]]});\n';
   } else {
-   pageCode='import { expect } from "@playwright/test";\\n\\nexport class GeneratedPage {\\n  constructor(page, baseUrl = '+q(baseUrl)+') { this.page=page; this.baseUrl=baseUrl; }\\n\\n'+methods+'}\\n';
-   configCode='import { defineConfig } from "@playwright/test";\\nexport default defineConfig({testDir:"./tests",use:{baseURL:'+q(baseUrl)+',trace:"retain-on-failure",screenshot:"only-on-failure"}});\\n';
+   pageCode='import { expect } from "@playwright/test";\n\nexport class GeneratedPage {\n  constructor(page, baseUrl = '+q(baseUrl)+') { this.page=page; this.baseUrl=baseUrl; }\n\n'+methods+'}\n';
+   configCode='import { defineConfig } from "@playwright/test";\nexport default defineConfig({testDir:"./tests",use:{baseURL:'+q(baseUrl)+',trace:"retain-on-failure",screenshot:"only-on-failure"}});\n';
   }
-  const actionPlan=unique.map(a=>'  // TODO: configure target selectors/data, then enable: app.'+a.method+'(...)').join('\\n');
-  testCode='import { test } from "@playwright/test";\\nimport { GeneratedPage } from "../pages/GeneratedPage.'+(language==='TypeScript'?'ts':'js')+'";\\n\\ntest('+q(projectName)+', async ({page}) => {\\n  const app = new GeneratedPage(page);\\n'+actionPlan+'\\n  // Add assertions for the intended business outcome.\\n});\\n';
+  const actionPlan=unique.map(a=>'  // TODO: configure target selectors/data, then enable: app.'+a.method+'(...)').join('\n');
+  testCode='import { test } from "@playwright/test";\nimport { GeneratedPage } from "../pages/GeneratedPage.'+(language==='TypeScript'?'ts':'js')+'";\n\ntest('+q(projectName)+', async ({page}) => {\n  const app = new GeneratedPage(page);\n'+actionPlan+'\n  // Add assertions for the intended business outcome.\n});\n';
   packageCode=JSON.stringify({name:safeName(projectName),private:true,type:'module',scripts:{test:'playwright test','test:headed':'playwright test --headed'},devDependencies:{'@playwright/test':'^1.51.0',...(language==='TypeScript'?{typescript:'^5.7.3'}:{})}},null,2);
  } else if(py) {
   pageCode='from selenium.webdriver.common.by import By\nfrom selenium.webdriver.support.ui import WebDriverWait, Select\nfrom selenium.webdriver.support import expected_conditions as EC\nfrom selenium.webdriver.common.action_chains import ActionChains\n\nclass GeneratedPage:\n    def __init__(self, driver, base_url='+q(baseUrl)+'):\n        self.driver=driver\n        self.base_url=base_url\n        self.wait=WebDriverWait(driver,10)\n\n'+methods;
