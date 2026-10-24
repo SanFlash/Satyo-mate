@@ -90,35 +90,35 @@ function methodBody(a:ActionDefinition,tool:Tool,lang:Language):string {
   const sel=lang==='TypeScript'?'selector: string':'selector';
   const val=lang==='TypeScript'?'value: string':'value';
   switch(a.kind){
-   case 'navigate':return '  async '+m+'(path = "/") { await this.driver.get(path.startsWith("http") ? path : this.baseUrl + path); }\\n';
-   case 'click':return '  async '+m+'('+sel+') { const el=await this.driver.wait(until.elementLocated(By.css(selector)),10000); await this.driver.wait(until.elementIsEnabled(el),10000); await el.click(); }\\n';
-   case 'fill':return '  async '+m+'('+sel+', '+val+') { const el=await this.driver.wait(until.elementLocated(By.css(selector)),10000); await el.clear(); await el.sendKeys(value); }\\n';
-   case 'hover':return '  async '+m+'('+sel+') { const el=await this.driver.findElement(By.css(selector)); await this.driver.actions().move({origin:el}).perform(); }\\n';
-   case 'press':return '  async '+m+'('+sel+', key'+(lang==='TypeScript'?': string':'')+') { await (await this.driver.findElement(By.css(selector))).sendKeys(key); }\\n';
-   case 'check':return '  async '+m+'('+sel+') { const el=await this.driver.findElement(By.css(selector)); if(!(await el.isSelected())) await el.click(); }\\n';
-   case 'uncheck':return '  async '+m+'('+sel+') { const el=await this.driver.findElement(By.css(selector)); if(await el.isSelected()) await el.click(); }\\n';
-   case 'select':return '  async '+m+'('+sel+', '+val+') { await new Select(await this.driver.findElement(By.css(selector))).selectByValue(value); }\\n';
-   case 'clear':return '  async '+m+'('+sel+') { await (await this.driver.findElement(By.css(selector))).clear(); }\\n';
-   case 'waitVisible':return '  async '+m+'('+sel+') { return await this.driver.wait(until.elementLocated(By.css(selector)),10000); }\\n';
-   case 'waitHidden':return '  async '+m+'('+sel+') { const el=await this.driver.findElement(By.css(selector)); await this.driver.wait(until.elementIsNotVisible(el),10000); }\\n';
-   case 'assertVisible':return '  async '+m+'('+sel+') { const el=await this.driver.wait(until.elementLocated(By.css(selector)),10000); if(!(await el.isDisplayed())) throw new Error("Expected visible"); }\\n';
-   case 'assertText':return '  async '+m+'('+sel+', '+val+') { const el=await this.driver.findElement(By.css(selector)); if(!(await el.getText()).includes(value)) throw new Error("Expected text missing"); }\\n';
-   case 'assertUrl':return '  async '+m+'(fragment'+(lang==='TypeScript'?': string':'')+') { if(!(await this.driver.getCurrentUrl()).includes(fragment)) throw new Error("URL fragment missing"); }\\n';
-   case 'assertCount':return '  async '+m+'('+sel+', count'+(lang==='TypeScript'?': number':'')+') { const els=await this.driver.findElements(By.css(selector)); if(els.length!==count) throw new Error("Unexpected count"); }\\n';
-   case 'assertEnabled':return '  async '+m+'('+sel+') { if(!(await this.driver.findElement(By.css(selector))).isEnabled()) throw new Error("Expected enabled"); }\\n';
-   case 'assertDisabled':return '  async '+m+'('+sel+') { if(await (await this.driver.findElement(By.css(selector))).isEnabled()) throw new Error("Expected disabled"); }\\n';
-   case 'assertChecked':return '  async '+m+'('+sel+') { if(!(await this.driver.findElement(By.css(selector))).isSelected()) throw new Error("Expected checked"); }\\n';
-   case 'assertTitle':return '  async '+m+'(title'+(lang==='TypeScript'?': string':'')+') { if(await this.driver.getTitle()!==title) throw new Error("Unexpected title"); }\\n';
-   case 'screenshot':return '  async '+m+'(path = "artifacts/page.png") { const fs=await import("node:fs/promises"); await fs.writeFile(path,Buffer.from(await this.driver.takeScreenshot(),"base64")); }\\n';
-   case 'reload':return '  async '+m+'() { await this.driver.navigate().refresh(); }\\n';
-   case 'back':return '  async '+m+'() { await this.driver.navigate().back(); }\\n';
-   case 'forward':return '  async '+m+'() { await this.driver.navigate().forward(); }\\n';
-   case 'focus':return '  async '+m+'('+sel+') { await this.driver.executeScript("arguments[0].focus()",await this.driver.findElement(By.css(selector))); }\\n';
-   case 'scroll':return '  async '+m+'('+sel+') { await this.driver.executeScript("arguments[0].scrollIntoView()",await this.driver.findElement(By.css(selector))); }\\n';
-   case 'doubleClick':return '  async '+m+'('+sel+') { await this.driver.actions().doubleClick(await this.driver.findElement(By.css(selector))).perform(); }\\n';
-   case 'rightClick':return '  async '+m+'('+sel+') { await this.driver.actions().contextClick(await this.driver.findElement(By.css(selector))).perform(); }\\n';
-   case 'upload':return '  async '+m+'('+sel+', filePath'+(lang==='TypeScript'?': string':'')+') { await (await this.driver.findElement(By.css(selector))).sendKeys(filePath); }\\n';
-   default:return '  async '+m+'(...args'+(lang==='TypeScript'?': unknown[]':'')+') { throw new Error('+q(a.label+' needs target-specific setup')+'); }\\n';
+   case 'navigate':return '  async '+m+'(path = "/") { await this.driver.get(path.startsWith("http") ? path : this.baseUrl + path); }\n';
+   case 'click':return '  async '+m+'('+sel+') { const el=await this.driver.wait(until.elementLocated(By.css(selector)),10000); await this.driver.wait(until.elementIsEnabled(el),10000); await el.click(); }\n';
+   case 'fill':return '  async '+m+'('+sel+', '+val+') { const el=await this.driver.wait(until.elementLocated(By.css(selector)),10000); await el.clear(); await el.sendKeys(value); }\n';
+   case 'hover':return '  async '+m+'('+sel+') { const el=await this.driver.findElement(By.css(selector)); await this.driver.actions().move({origin:el}).perform(); }\n';
+   case 'press':return '  async '+m+'('+sel+', key'+(lang==='TypeScript'?': string':'')+') { await (await this.driver.findElement(By.css(selector))).sendKeys(key); }\n';
+   case 'check':return '  async '+m+'('+sel+') { const el=await this.driver.findElement(By.css(selector)); if(!(await el.isSelected())) await el.click(); }\n';
+   case 'uncheck':return '  async '+m+'('+sel+') { const el=await this.driver.findElement(By.css(selector)); if(await el.isSelected()) await el.click(); }\n';
+   case 'select':return '  async '+m+'('+sel+', '+val+') { await new Select(await this.driver.findElement(By.css(selector))).selectByValue(value); }\n';
+   case 'clear':return '  async '+m+'('+sel+') { await (await this.driver.findElement(By.css(selector))).clear(); }\n';
+   case 'waitVisible':return '  async '+m+'('+sel+') { return await this.driver.wait(until.elementLocated(By.css(selector)),10000); }\n';
+   case 'waitHidden':return '  async '+m+'('+sel+') { const el=await this.driver.findElement(By.css(selector)); await this.driver.wait(until.elementIsNotVisible(el),10000); }\n';
+   case 'assertVisible':return '  async '+m+'('+sel+') { const el=await this.driver.wait(until.elementLocated(By.css(selector)),10000); if(!(await el.isDisplayed())) throw new Error("Expected visible"); }\n';
+   case 'assertText':return '  async '+m+'('+sel+', '+val+') { const el=await this.driver.findElement(By.css(selector)); if(!(await el.getText()).includes(value)) throw new Error("Expected text missing"); }\n';
+   case 'assertUrl':return '  async '+m+'(fragment'+(lang==='TypeScript'?': string':'')+') { if(!(await this.driver.getCurrentUrl()).includes(fragment)) throw new Error("URL fragment missing"); }\n';
+   case 'assertCount':return '  async '+m+'('+sel+', count'+(lang==='TypeScript'?': number':'')+') { const els=await this.driver.findElements(By.css(selector)); if(els.length!==count) throw new Error("Unexpected count"); }\n';
+   case 'assertEnabled':return '  async '+m+'('+sel+') { if(!(await this.driver.findElement(By.css(selector))).isEnabled()) throw new Error("Expected enabled"); }\n';
+   case 'assertDisabled':return '  async '+m+'('+sel+') { if(await (await this.driver.findElement(By.css(selector))).isEnabled()) throw new Error("Expected disabled"); }\n';
+   case 'assertChecked':return '  async '+m+'('+sel+') { if(!(await this.driver.findElement(By.css(selector))).isSelected()) throw new Error("Expected checked"); }\n';
+   case 'assertTitle':return '  async '+m+'(title'+(lang==='TypeScript'?': string':'')+') { if(await this.driver.getTitle()!==title) throw new Error("Unexpected title"); }\n';
+   case 'screenshot':return '  async '+m+'(path = "artifacts/page.png") { const fs=await import("node:fs/promises"); await fs.writeFile(path,Buffer.from(await this.driver.takeScreenshot(),"base64")); }\n';
+   case 'reload':return '  async '+m+'() { await this.driver.navigate().refresh(); }\n';
+   case 'back':return '  async '+m+'() { await this.driver.navigate().back(); }\n';
+   case 'forward':return '  async '+m+'() { await this.driver.navigate().forward(); }\n';
+   case 'focus':return '  async '+m+'('+sel+') { await this.driver.executeScript("arguments[0].focus()",await this.driver.findElement(By.css(selector))); }\n';
+   case 'scroll':return '  async '+m+'('+sel+') { await this.driver.executeScript("arguments[0].scrollIntoView()",await this.driver.findElement(By.css(selector))); }\n';
+   case 'doubleClick':return '  async '+m+'('+sel+') { await this.driver.actions().doubleClick(await this.driver.findElement(By.css(selector))).perform(); }\n';
+   case 'rightClick':return '  async '+m+'('+sel+') { await this.driver.actions().contextClick(await this.driver.findElement(By.css(selector))).perform(); }\n';
+   case 'upload':return '  async '+m+'('+sel+', filePath'+(lang==='TypeScript'?': string':'')+') { await (await this.driver.findElement(By.css(selector))).sendKeys(filePath); }\n';
+   default:return '  async '+m+'(...args'+(lang==='TypeScript'?': unknown[]':'')+') { throw new Error('+q(a.label+' needs target-specific setup')+'); }\n';
   }
  }
  switch(a.kind){
@@ -192,8 +192,8 @@ function buildProject(tool:Tool,language:Language,selected:ActionDefinition[],ba
   testCode='from selenium import webdriver\nfrom pages.generated_page import GeneratedPage\n\ndef test_composed_workflow():\n    driver=webdriver.Chrome()\n    try:\n        app=GeneratedPage(driver)\n        # TODO: compose selected actions using real selectors and assertions\n    finally:\n        driver.quit()\n';
   requirements='selenium>=4.25\npytest>=8.0\n';
  } else {
-  const seleniumConstructor=language==='TypeScript'?'  constructor(private readonly driver: WebDriver, private readonly baseUrl = '+q(baseUrl)+') {}\\n\\n':'  constructor(driver, baseUrl = '+q(baseUrl)+') { this.driver=driver; this.baseUrl=baseUrl; }\\n\\n';
-  pageCode='import { By, until, Select'+(language==='TypeScript'?', type WebDriver':'')+' } from "selenium-webdriver";\\n\\nexport class GeneratedPage {\\n'+seleniumConstructor+methods+'}\\n';
+  const seleniumConstructor=language==='TypeScript'?'  constructor(private readonly driver: WebDriver, private readonly baseUrl = '+q(baseUrl)+') {}\n\n':'  constructor(driver, baseUrl = '+q(baseUrl)+') { this.driver=driver; this.baseUrl=baseUrl; }\n\n';
+  pageCode='import { By, until, Select'+(language==='TypeScript'?', type WebDriver':'')+' } from "selenium-webdriver";\n\nexport class GeneratedPage {\n'+seleniumConstructor+methods+'}\n';
   testCode='// TODO: Add runner-specific test lifecycle, target selectors and assertions.\n// Selected POM actions: '+unique.map(a=>a.method+'()').join(', ')+'\n';
   packageCode=JSON.stringify({name:safeName(projectName),private:true,type:'module',scripts:{test:language==='TypeScript'?'tsx tests/composed.spec.ts':'node tests/composed.spec.js'},dependencies:{'selenium-webdriver':'^4.28.0'},devDependencies:language==='TypeScript'?{tsx:'^4.19.2',typescript:'^5.7.3','@types/node':'^22.10.5'}:{}},null,2);
  }
