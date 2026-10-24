@@ -1,46 +1,79 @@
 # AutoLearn QA — Interactive Automation Engineering Lab
 
-AutoLearn QA is a Vercel-hostable learning platform for UI and end-to-end automation using Playwright and Selenium WebDriver with Python, JavaScript, and TypeScript. Its core teaching model is the Page Object Model (POM), paired with interactive local demos and complete, file-by-file project examples.
+AutoLearn QA is a responsive learning workspace for web UI and end-to-end automation. It combines a structured curriculum, interactive local demo components, and starter project generation for Selenium and Playwright using Python, JavaScript, and TypeScript.
 
-## Product goals
+## Current starter features
 
-- Searchable lessons for common HTML controls, complex website components, locators, user interactions, forms, and realistic E2E workflows.
-- Six supported combinations: Playwright and Selenium, each with Python, JavaScript, and TypeScript implementations.
-- Complete POM examples, including page objects, tests, fixtures/configuration, dependencies, execution commands, expected results, and troubleshooting.
-- Sandboxed iframe demos that illustrate the element and action being taught.
-- A template-driven script generator with copy and downloadable project support.
-- Responsive learning dashboard with search, filters, bookmarks, and progress tracking.
-- Accessible UI, secure demo isolation, and Vercel-friendly architecture.
+- Dark/light theme toggle and responsive navigation
+- Searchable starter curriculum with difficulty filtering
+- Lesson selection, bookmark toggles, and local completion progress
+- Interactive local demos for login, dropdowns, dialogs, forms, tables, and tabs
+- Tool/language snippet switching
+- A multi-file starter project generator for all six tool-language combinations
+- Individual generated-file downloads and copy controls
+- Vercel-compatible Next.js app structure
 
-## Recommended architecture
+> Generated templates are starter examples, not yet execution-verified. Their selectors and URLs must match a real local demo application before use. This interface does not run browser scripts.
 
-- Next.js + React + TypeScript
-- Tailwind CSS and accessible reusable components
-- Structured, version-controlled lesson/template data
-- Sandboxed local HTML/CSS/JS previews
-- Deterministic generator templates validated by automated tests
-- Optional Supabase account sync; core learning remains usable without login
-- Vercel for the learning frontend; browser automation execution should run locally, in CI, or in a separately isolated runner rather than inside ordinary serverless requests
+## Stack
 
-## Implementation sequence
+- Next.js App Router, React, TypeScript
+- Lucide icons
+- Custom responsive CSS
+- Versioned lesson data and deterministic starter templates
 
-1. Build the responsive application shell, navigation, search, and curriculum index.
-2. Add lesson schema, element/action libraries, and interactive sandboxed previews.
-3. Implement all six tool-language templates and complete POM project generation.
-4. Add E2E scenarios, exercises, bookmarks/progress, ZIP export, and automated generator tests.
-5. Verify the production build and preview deployment, then expand the curated catalogue incrementally.
+## Run locally
 
-## Quality and safety requirements
+Use Node.js 20 or newer.
 
-- Do not label code as tested unless it has actually been run.
-- Do not silently generate unsupported tool/language combinations.
-- Prefer Playwright's auto-waiting/assertions and Selenium explicit waits over fixed sleeps.
-- Keep credentials out of source and test fixtures.
-- Use local demo applications or authorized environments only.
-- Never execute user-generated code with unrestricted host or network access.
+```bash
+npm install
+npm run dev
+```
 
-## Deployment
+Open `http://localhost:3000`.
 
-Once the Next.js application and its package lockfile are committed, import this repository into Vercel or connect it through the Vercel Git integration. Use the project root as the root directory unless the repository is later converted to a monorepo. Follow Vercel's standard Next.js build detection and configure only required environment variables.
+Check the production build with:
 
-The repository currently starts with this project brief. The application source, generated templates, tests, and lockfile must be added before deployment can build a functional website.
+```bash
+npm run build
+npm run typecheck
+```
+
+## Deploy to Vercel
+
+1. Import `SanFlash/Satyo-mate` into your Vercel account.
+2. Set the project root directory to the repository root.
+3. Use the Next.js framework preset and the default build command (`next build`).
+4. Deploy. No environment variables are required for the current anonymous learning starter.
+
+Vercel Git integration can automatically create preview deployments for branches and deploy the production branch. The Vercel Git project connection is not yet confirmed for this repository.
+
+## Project structure
+
+```text
+src/
+  app/
+    globals.css
+    layout.tsx
+    page.tsx
+  lib/
+    catalog.ts
+    generator.ts
+docs/
+  PRODUCT_SPEC.md
+```
+
+## Planned next work
+
+- Add a lockfile and CI checks, then verify build and typecheck in CI
+- Add complete curated POM templates per tool/language and improve the generator so POM toggles and framework choices affect the generated output consistently
+- Bundle all generated files into a downloadable ZIP
+- Add proper code syntax highlighting and full file tabs
+- Add persistent bookmarks/progress and optional Supabase sync
+- Expand elements/actions/E2E lessons with configuration, sample markup, test data, assertions, execution instructions, expected results, and troubleshooting
+- Add unit/integration tests for the generator and demo components
+
+## Architecture boundary
+
+The Vercel-hosted site is the learning interface. Actual Playwright/Selenium execution should happen locally, in CI, or in a separately isolated browser runner. Do not run arbitrary generated code inside the user-facing page or an unrestricted serverless function.
