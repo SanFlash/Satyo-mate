@@ -16,7 +16,6 @@ jobs:
       - uses: actions/setup-node@1e60f620b9541dacc1e97b0d99b9ba4d27c8e9a0 # v4.0.3
         with:
           node-version: 22
-          cache: npm
       - run: npm install
       - run: npm run typecheck
       - run: npm run build
