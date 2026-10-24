@@ -18,5 +18,5 @@ export const lessons: Lesson[] = [
 export const navGroups = [
   {title:'LEARN',items:['Dashboard','Getting Started','Automation Fundamentals','Website Elements','User Interactions','Locators & Selectors','Page Object Model']},
   {title:'TOOLS & LANGUAGES',items:['Playwright','Selenium','Python','JavaScript','TypeScript','Test Frameworks']},
-  {title:'PRACTICE',items:['E2E Scenarios','API & Network Testing','Debugging & Reporting','Practice Lab','Cheat Sheets','Progress & Bookmarks']},
+  {title:'ADVANCED COVERAGE',items:['Advanced Components','Dynamic Components','Forms and Validation','API & Network Testing','Accessibility Testing','Test Frameworks']},\n  {title:'PRACTICE',items:['E2E Scenarios','Debugging & Reporting','Practice Lab','Cheat Sheets','Progress & Bookmarks']},
 ];
