@@ -5,11 +5,11 @@ AutoLearn QA is a responsive learning workspace for web UI and end-to-end automa
 ## Current starter features
 
 - Dark/light theme toggle and responsive navigation
-- Searchable starter curriculum with difficulty filtering
+- Expanded searchable curriculum with difficulty filtering across fundamentals, UI components, accessibility, API/network testing, E2E scenarios, debugging, and CI
 - Lesson selection, bookmark toggles, and local completion progress
-- Interactive local demos for login, dropdowns, dialogs, forms, tables, and tabs
+- Interactive local demos for login, dropdowns, dialogs, forms, tables, and tabs, plus lesson coverage for autocomplete, accordions, tooltips, toasts, pagination, sorting, date/time inputs, keyboard focus, iframes, Shadow DOM, responsive layouts, and more
 - Tool/language snippet switching
-- A multi-file starter project generator for all six tool-language combinations
+- Expanded project generator selectors for 30+ component/scenario types and 20 action patterns, across all six tool-language combinations
 - Individual generated-file downloads and copy controls
 - Vercel-compatible Next.js app structure
 
