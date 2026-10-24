@@ -158,7 +158,8 @@ function buildProject(tool:Tool,language:Language,selected:ActionDefinition[],ba
   testCode='from selenium import webdriver\nfrom pages.generated_page import GeneratedPage\n\ndef test_composed_workflow():\n    driver=webdriver.Chrome()\n    try:\n        app=GeneratedPage(driver)\n        # TODO: compose selected actions using real selectors and assertions\n    finally:\n        driver.quit()\n';
   requirements='selenium>=4.25\npytest>=8.0\n';
  } else {
-  pageCode='import { By, until, Select'+(language==='TypeScript'?', type WebDriver':'')+' } from "selenium-webdriver";\n\nexport class GeneratedPage {\n  constructor(private readonly driver'+(language==='TypeScript'?': WebDriver':'')+', private readonly baseUrl = '+q(baseUrl)+') {}\n\n'+methods+'}\n';
+  const seleniumConstructor=language==='TypeScript'?'  constructor(private readonly driver: WebDriver, private readonly baseUrl = '+q(baseUrl)+') {}\\n\\n':'  constructor(driver, baseUrl = '+q(baseUrl)+') { this.driver=driver; this.baseUrl=baseUrl; }\\n\\n';
+  pageCode='import { By, until, Select'+(language==='TypeScript'?', type WebDriver':'')+' } from "selenium-webdriver";\\n\\nexport class GeneratedPage {\\n'+seleniumConstructor+methods+'}\\n';
   testCode='// TODO: Add runner-specific test lifecycle, target selectors and assertions.\n// Selected POM actions: '+unique.map(a=>a.method+'()').join(', ')+'\n';
   packageCode=JSON.stringify({name:safeName(projectName),private:true,type:'module',scripts:{test:language==='TypeScript'?'tsx tests/composed.spec.ts':'node tests/composed.spec.js'},dependencies:{'selenium-webdriver':'^4.28.0'},devDependencies:language==='TypeScript'?{tsx:'^4.19.2',typescript:'^5.7.3','@types/node':'^22.10.5'}:{}},null,2);
  }
