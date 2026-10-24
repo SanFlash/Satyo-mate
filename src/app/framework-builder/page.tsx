@@ -167,7 +167,7 @@ function methodBody(a:ActionDefinition,tool:Tool,lang:Language):string {
 function buildProject(tool:Tool,language:Language,selected:ActionDefinition[],baseUrl:string,projectName:string):FileEntry[]{
  const unique=selected.filter((a,i)=>selected.findIndex(b=>b.method===a.method)===i);
  const rawMethods=actionGroups.filter(g=>unique.some(a=>a.group===g)).map(g=>'  // ===== '+g+' =====\n'+unique.filter(a=>a.group===g).map(a=>methodBody(a,tool,language)).join('\n')).join('\n');
- const methods=language==='JavaScript'?rawMethods.replace(/: (string|number|unknown|RegExp|unknown\\[\\])/g,'').replace(/ as HTMLElement/g,''):rawMethods;
+ const methods=language==='JavaScript'?rawMethods.replace(/: unknown\[\]/g,'').replace(/: (string|number|unknown|RegExp)/g,'').replace(/ as HTMLElement/g,''):rawMethods;
  const py=language==='Python', pw=tool==='Playwright', ext=py?'py':language==='TypeScript'?'ts':'js';
  const pagePath=py?'pages/generated_page.py':'pages/GeneratedPage.'+ext;
  let pageCode='',testCode='',configCode='',packageCode='',requirements='';
