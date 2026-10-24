@@ -77,7 +77,7 @@ Search/index; filters by tool/language/difficulty/framework; completion, bookmar
 
 Use local demos within sandboxed iframes and strict isolation; do not execute generated browser scripts in the user-facing page. Never allow arbitrary server-side shell execution or unrestricted remote URL browsing. A future execution service must use ephemeral isolated workers, resource/time limits, and controlled egress.
 
-## Definition of done
+## Expanded coverage delivered in the starter\n\nThe current curriculum includes dedicated entries for autocomplete, accordions, tooltip/popover behavior, toast alerts, pagination, sorting, date/time controls, checkbox/radio/toggle states, drag and drop, keyboard/focus order, iframes, Shadow DOM, responsive testing, accessibility smoke checks, API-assisted setup/teardown, network mocking, authentication/session expiry, e-commerce checkout, visual regression, trace-based debugging, CI execution, parallel isolation, mobile emulation, and data-driven tests. These entries currently reuse six interactive demo types; the lesson content is a guide and does not claim every advanced component is independently simulated.\n\nThe generator UI exposes a broader component/scenario list and action list. The current generator remains a starter-template generator: POM/framework settings and selectors should be reviewed against the target app before use, and generated scripts are not executed on the hosted page.\n\n## Definition of done
 
 - Mobile and desktop access to all core content.
 - All six language/tool variants and coherent complete project output.
