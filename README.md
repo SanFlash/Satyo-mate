@@ -9,6 +9,7 @@ AutoLearn QA is a responsive learning workspace for web UI and end-to-end automa
 - Lesson selection, bookmark toggles, and local completion progress that automatically restores across visits on the same browser
 - Workspace JSON backup and restore for completed lessons, bookmarks, selected lesson, active section, search/filter settings, and theme
 - Keyboard command palette (`Ctrl+K` on Windows/Linux, `⌘K` on macOS) for fast lesson search, navigation, and workspace actions
+- Contextual, keyboard/touch-accessible tooltips across the dashboard, Test Design Studio, generator, and framework builder to explain metrics, settings, coverage, and execution boundaries
 - Motion-aware interface transitions that respect `prefers-reduced-motion`
 - Interactive local demos for login, dropdowns, dialogs, forms, tables, and tabs, plus lesson coverage for autocomplete, accordions, tooltips, toasts, pagination, sorting, date/time inputs, keyboard focus, iframes, Shadow DOM, responsive layouts, and more
 - Tool/language snippet switching
