@@ -77,7 +77,7 @@ function DemoPreview({type, runStep, onReset}:{type:DemoType;runStep:number;onRe
   const [sort,setSort] = useState('All');
   const reset = () => {setOpened(false);setQuery('');setSelectedTab('Overview');setDone(false);setSubmitted(false);setChecked(false);setSort('All');onReset();};
   useEffect(() => {
-    if (runStep <= 0) return;
+    if (runStep <= 0) { setOpened(false); setQuery(''); setSelectedTab('Overview'); setDone(false); setSubmitted(false); setChecked(false); setSort('All'); return; }
     if (type === 'login') { setChecked(runStep >= 3); setSubmitted(runStep >= 4); }
     if (type === 'dropdown') { setOpened(runStep === 1); if (runStep >= 2) { setSort('Preview'); setOpened(false); setDone(true); } }
     if (type === 'modal') { setOpened(runStep === 1 || runStep === 2); if (runStep >= 3) { setOpened(false); setDone(true); } }
@@ -130,7 +130,7 @@ export default function Home() {
   const resetPreviewRun = () => {setRunStep(0);setRunStatus('ready');setRunLogs([]);};
   const runPreviewScript = async () => {
     if (runStatus === 'running') return;
-    setRunStep(0); setRunStatus('running');
+    setRunStep(-1); setRunStatus('running');
     setRunLogs([{kind:'info',message:'Starting local preview scenario: '+selectedLesson.title}]);
     for (let i=0;i<previewSteps.length;i++) {
       setRunLogs(prev=>[...prev,{kind:'running',message:'Step '+(i+1)+': '+previewSteps[i].label}]);
