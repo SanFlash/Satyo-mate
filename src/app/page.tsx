@@ -30,19 +30,36 @@ type PreviewStep = { label: string; code: string };
 function getPreviewScript(type: DemoType, tool: Tool, language: Language): PreviewStep[] {
   const py = language === 'Python';
   const pw = tool === 'Playwright';
+  const seleniumFallbacks: Record<string, {js:string;python:string}> = {
+    'Open environment menu': {js:"await driver.findElement(By.css('.demo-select')).click();",python:"driver.find_element(By.CSS_SELECTOR, '.demo-select').click()"},
+    'Choose Preview': {js:"await driver.findElement(By.css('.demo-options button:nth-child(2)')).click();",python:"driver.find_element(By.CSS_SELECTOR, '.demo-options button:nth-child(2)').click()"},
+    'Assert selected environment': {js:"if (!(await driver.findElement(By.css('[role=status]')).getText()).includes('Preview')) throw new Error('Selection missing');",python:"assert 'Preview' in driver.find_element(By.CSS_SELECTOR, '[role=status]').text"},
+    'Open confirmation dialog': {js:"await driver.findElement(By.css('.demo-component .demo-primary')).click();",python:"driver.find_element(By.CSS_SELECTOR, '.demo-component .demo-primary').click()"},
+    'Verify dialog is visible': {js:"if (!(await driver.findElement(By.css('[role=dialog]')).isDisplayed())) throw new Error('Dialog not visible');",python:"assert driver.find_element(By.CSS_SELECTOR, '[role=dialog]').is_displayed()"},
+    'Confirm action': {js:"await driver.findElement(By.css('[role=dialog] .demo-primary')).click();",python:"driver.find_element(By.CSS_SELECTOR, '[role=dialog] .demo-primary').click()"},
+    'Assert confirmation result': {js:"if (!(await driver.findElement(By.css('[role=status]')).getText()).includes('completed')) throw new Error('Status missing');",python:"assert 'completed' in driver.find_element(By.CSS_SELECTOR, '[role=status]').text"},
+    'Search team members': {js:"await driver.findElement(By.css('.demo-search input')).sendKeys('Maya');",python:"driver.find_element(By.CSS_SELECTOR, '.demo-search input').send_keys('Maya')"},
+    'Assert matching row': {js:"if (!(await driver.findElement(By.css('.demo-table-view tbody tr')).getText()).includes('Maya Patel')) throw new Error('Matching row missing');",python:"assert 'Maya Patel' in driver.find_element(By.CSS_SELECTOR, '.demo-table-view tbody tr').text"},
+    'Fill work email': {js:"await driver.findElement(By.css('input[aria-label=\"Work email\"]')).sendKeys('qa@example.com');",python:"driver.find_element(By.CSS_SELECTOR, 'input[aria-label=\"Work email\"]').send_keys('qa@example.com')"},
+    'Fill access reason': {js:"await driver.findElement(By.css('textarea[aria-label=\"Reason for access\"]')).sendKeys('Automation testing');",python:"driver.find_element(By.CSS_SELECTOR, 'textarea[aria-label=\"Reason for access\"]').send_keys('Automation testing')"},
+    'Submit request': {js:"await driver.findElement(By.css('.demo-component .demo-primary')).click();",python:"driver.find_element(By.CSS_SELECTOR, '.demo-component .demo-primary').click()"},
+    'Assert submission result': {js:"if (!(await driver.findElement(By.css('[role=status]')).getText()).includes('received')) throw new Error('Submission missing');",python:"assert 'received' in driver.find_element(By.CSS_SELECTOR, '[role=status]').text"},
+    'Open Security tab': {js:"await driver.findElement(By.css('[role=tab]:nth-child(3)')).click();",python:"driver.find_element(By.CSS_SELECTOR, '[role=tab]:nth-child(3)').click()"},
+    'Assert active tab': {js:"if (await driver.findElement(By.css('[role=tab]:nth-child(3)')).getAttribute('aria-selected') !== 'true') throw new Error('Security tab is not active');",python:"assert driver.find_element(By.CSS_SELECTOR, '[role=tab]:nth-child(3)').get_attribute('aria-selected') == 'true'"}
+  };
   const make = (label: string, js: string, python: string, seleniumJs?: string, seleniumPy?: string): PreviewStep => ({
     label,
-    code: py ? (pw ? python : (seleniumPy || python)) : (pw ? js : (seleniumJs || js))
+    code: py ? (pw ? python : (seleniumPy || seleniumFallbacks[label]?.python || python)) : (pw ? js : (seleniumJs || seleniumFallbacks[label]?.js || js))
   });
   if (type === 'login') return [
     make('Fill email', "await page.getByLabel('Email address').fill('qa@example.com');", "page.get_by_label('Email address').fill('qa@example.com')", "await driver.findElement(By.css('input[type=email]')).sendKeys('qa@example.com');", "driver.find_element(By.CSS_SELECTOR, 'input[type=email]').send_keys('qa@example.com')"),
     make('Fill password', "await page.getByLabel('Password').fill('demo-password');", "page.get_by_label('Password').fill('demo-password')", "await driver.findElement(By.css('input[type=password]')).sendKeys('demo-password');", "driver.find_element(By.CSS_SELECTOR, 'input[type=password]').send_keys('demo-password')"),
-    make('Submit login form', "await page.getByRole('button', { name: 'Sign in' }).click();", "page.get_by_role('button', name='Sign in').click()", "await driver.findElement(By.xpath(\\"//button[contains(., 'Sign in')]\\")).click();", "driver.find_element(By.XPATH, \\"//button[contains(., 'Sign in')]\\").click()"),
+    make('Submit login form', "await page.getByRole('button', { name: 'Sign in' }).click();", "page.get_by_role('button', name='Sign in').click()", "await driver.findElement(By.css('.demo-login button.demo-primary')).click();", "driver.find_element(By.CSS_SELECTOR, '.demo-login button.demo-primary').click()"),
     make('Assert success message', "await expect(page.getByRole('status')).toContainText('completed');", "expect(page.get_by_role('status')).to_contain_text('completed')", "if (!(await driver.findElement(By.css('[role=status]')).getText()).includes('completed')) throw new Error('Status missing');", "assert 'completed' in driver.find_element(By.CSS_SELECTOR, '[role=status]').text")
   ];
   if (type === 'dropdown') return [
     make('Open environment menu', "await page.getByRole('button', { name: /Select environment/ }).click();", "page.get_by_role('button', name='Select environment').click()"),
-    make('Choose Preview', "await page.getByRole('option', { name: 'Preview' }).click();", "page.getByRole('button', name='Preview').click()"),
+    make('Choose Preview', "await page.getByRole('button', { name: 'Preview' }).click();", "page.getByRole('button', name='Preview').click()"),
     make('Assert selected environment', "await expect(page.getByRole('status')).toContainText('Preview');", "expect(page.get_by_role('status')).to_contain_text('Preview')")
   ];
   if (type === 'modal') return [
