@@ -241,3 +241,15 @@ html{scroll-behavior:smooth;scroll-padding-top:78px}
 .sidebar-backup-actions button:hover{border-color:var(--accent);color:var(--accent);background:var(--panel2)}
 .sidebar-bottom small{line-height:1.4}
 @media(max-width:760px){.sidebar-backup-actions{margin-top:4px}.sidebar-backup-actions button{padding:10px 7px}}
+
+/* Accessible contextual tooltips shared across the learning dashboard and QA workspaces */
+.help-tip{position:relative;display:inline-flex;vertical-align:middle;align-items:center;margin-left:3px;z-index:5}
+.help-tip-trigger{width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;padding:0;border:1px solid var(--line);border-radius:50%;background:var(--panel2);color:var(--muted);cursor:help;vertical-align:middle}
+.help-tip-trigger:hover,.help-tip-trigger:focus-visible,.help-tip.is-open .help-tip-trigger{color:var(--accent);border-color:var(--accent)}
+.help-tip-content{position:absolute;left:50%;bottom:calc(100% + 9px);transform:translate(-50%,4px);width:min(260px,calc(100vw - 36px));padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:var(--panel);color:var(--text2);font:500 11px/1.55 var(--font-body);box-shadow:0 12px 32px #0004;white-space:normal;text-align:left;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .14s ease,transform .14s ease;z-index:2000}
+.help-tip-content:after{content:"";position:absolute;top:100%;left:50%;border:6px solid transparent;border-top-color:var(--line);transform:translateX(-50%)}
+.help-tip:hover .help-tip-content,.help-tip:focus-within .help-tip-content,.help-tip.is-open .help-tip-content{opacity:1;visibility:visible;transform:translate(-50%,0);pointer-events:auto}
+.stat-label .help-tip-trigger{width:15px;height:15px}
+.stat-label .help-tip-trigger svg{width:10px;height:10px}
+.generator-form label .help-tip{margin-left:2px}
+@media(max-width:600px){.help-tip-content{position:fixed;left:18px;right:18px;bottom:auto;top:30%;transform:translateY(4px);width:auto;max-width:none}.help-tip-content:after{display:none}.help-tip:hover .help-tip-content,.help-tip:focus-within .help-tip-content,.help-tip.is-open .help-tip-content{transform:translateY(0)}}
