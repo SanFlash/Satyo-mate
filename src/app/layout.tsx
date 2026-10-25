@@ -3,7 +3,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'AutoLearn QA | Automation Engineering Lab',
-  description: 'Learn Selenium and Playwright with interactive demos and complete Page Object Model projects in Python, JavaScript, and TypeScript.',
+  description: 'Learn Playwright and Selenium with interactive demos, a composable Page Object Model builder, and a test design studio for coverage planning and automation scaffolds.',
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
