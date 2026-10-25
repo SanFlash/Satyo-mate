@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { Activity, ArrowDownToLine, ArrowRight, BookOpen, Bookmark, Check, ChevronDown, ChevronRight, CircleHelp, Code2, Copy, Filter, FlaskConical, Gauge, GraduationCap, Laptop, Layers3, Menu, Moon, Play, Search, Settings2, ShieldCheck, Sparkles, Sun, TerminalSquare, X } from 'lucide-react';
 import { lessons, navGroups, type Lesson, type Language, type Tool } from '@/lib/catalog';
 import { generateProject } from '@/lib/generator';
@@ -25,7 +25,49 @@ const toolSnippets:Record<Tool,Record<Language,string>> = {
   }
 };
 
-function DemoPreview({type}:{type:DemoType}) {
+type PreviewStep = { label: string; code: string };
+
+function getPreviewScript(type: DemoType, tool: Tool, language: Language): PreviewStep[] {
+  const py = language === 'Python';
+  const pw = tool === 'Playwright';
+  const make = (label: string, js: string, python: string, seleniumJs?: string, seleniumPy?: string): PreviewStep => ({
+    label,
+    code: py ? (pw ? python : (seleniumPy || python)) : (pw ? js : (seleniumJs || js))
+  });
+  if (type === 'login') return [
+    make('Fill email', "await page.getByLabel('Email address').fill('qa@example.com');", "page.get_by_label('Email address').fill('qa@example.com')", "await driver.findElement(By.css('input[type=email]')).sendKeys('qa@example.com');", "driver.find_element(By.CSS_SELECTOR, 'input[type=email]').send_keys('qa@example.com')"),
+    make('Fill password', "await page.getByLabel('Password').fill('demo-password');", "page.get_by_label('Password').fill('demo-password')", "await driver.findElement(By.css('input[type=password]')).sendKeys('demo-password');", "driver.find_element(By.CSS_SELECTOR, 'input[type=password]').send_keys('demo-password')"),
+    make('Submit login form', "await page.getByRole('button', { name: 'Sign in' }).click();", "page.get_by_role('button', name='Sign in').click()", "await driver.findElement(By.xpath(\\"//button[contains(., 'Sign in')]\\")).click();", "driver.find_element(By.XPATH, \\"//button[contains(., 'Sign in')]\\").click()"),
+    make('Assert success message', "await expect(page.getByRole('status')).toContainText('completed');", "expect(page.get_by_role('status')).to_contain_text('completed')", "if (!(await driver.findElement(By.css('[role=status]')).getText()).includes('completed')) throw new Error('Status missing');", "assert 'completed' in driver.find_element(By.CSS_SELECTOR, '[role=status]').text")
+  ];
+  if (type === 'dropdown') return [
+    make('Open environment menu', "await page.getByRole('button', { name: /Select environment/ }).click();", "page.get_by_role('button', name='Select environment').click()"),
+    make('Choose Preview', "await page.getByRole('option', { name: 'Preview' }).click();", "page.getByRole('button', name='Preview').click()"),
+    make('Assert selected environment', "await expect(page.getByRole('status')).toContainText('Preview');", "expect(page.get_by_role('status')).to_contain_text('Preview')")
+  ];
+  if (type === 'modal') return [
+    make('Open confirmation dialog', "await page.getByRole('button', { name: /Open confirmation/ }).click();", "page.get_by_role('button', name='Open confirmation').click()"),
+    make('Verify dialog is visible', "await expect(page.getByRole('dialog')).toBeVisible();", "expect(page.get_by_role('dialog')).to_be_visible()"),
+    make('Confirm action', "await page.getByRole('button', { name: 'Confirm' }).click();", "page.get_by_role('button', name='Confirm').click()"),
+    make('Assert confirmation result', "await expect(page.getByRole('status')).toContainText('completed');", "expect(page.get_by_role('status')).to_contain_text('completed')")
+  ];
+  if (type === 'table') return [
+    make('Search team members', "await page.getByRole('textbox', { name: 'Search members' }).fill('Maya');", "page.get_by_role('textbox', name='Search members').fill('Maya')"),
+    make('Assert matching row', "await expect(page.getByRole('cell', { name: 'Maya Patel' })).toBeVisible();", "expect(page.get_by_role('cell', name='Maya Patel')).to_be_visible()")
+  ];
+  if (type === 'form') return [
+    make('Fill work email', "await page.getByLabel('Work email').fill('qa@example.com');", "page.get_by_label('Work email').fill('qa@example.com')"),
+    make('Fill access reason', "await page.getByLabel('Reason for access').fill('Automation testing');", "page.get_by_label('Reason for access').fill('Automation testing')"),
+    make('Submit request', "await page.getByRole('button', { name: /Submit request/ }).click();", "page.get_by_role('button', name='Submit request').click()"),
+    make('Assert submission result', "await expect(page.getByRole('status')).toContainText('received');", "expect(page.get_by_role('status')).to_contain_text('received')")
+  ];
+  return [
+    make('Open Security tab', "await page.getByRole('tab', { name: 'Security' }).click();", "page.get_by_role('tab', name='Security').click()"),
+    make('Assert active tab', "await expect(page.getByRole('tab', { name: 'Security' })).toHaveAttribute('aria-selected', 'true');", "expect(page.get_by_role('tab', name='Security')).to_have_attribute('aria-selected', 'true')")
+  ];
+}
+
+function DemoPreview({type, runStep, onReset}:{type:DemoType;runStep:number;onReset:()=>void}) {
   const [opened,setOpened] = useState(false);
   const [query,setQuery] = useState('');
   const [selectedTab,setSelectedTab] = useState('Overview');
@@ -33,7 +75,16 @@ function DemoPreview({type}:{type:DemoType}) {
   const [submitted,setSubmitted] = useState(false);
   const [checked,setChecked] = useState(false);
   const [sort,setSort] = useState('All');
-  const reset = () => {setOpened(false);setQuery('');setSelectedTab('Overview');setDone(false);setSubmitted(false);setChecked(false);setSort('All');};
+  const reset = () => {setOpened(false);setQuery('');setSelectedTab('Overview');setDone(false);setSubmitted(false);setChecked(false);setSort('All');onReset();};
+  useEffect(() => {
+    if (runStep <= 0) return;
+    if (type === 'login') { setChecked(runStep >= 3); setSubmitted(runStep >= 4); }
+    if (type === 'dropdown') { setOpened(runStep === 1); if (runStep >= 2) { setSort('Preview'); setOpened(false); setDone(true); } }
+    if (type === 'modal') { setOpened(runStep === 1 || runStep === 2); if (runStep >= 3) { setOpened(false); setDone(true); } }
+    if (type === 'table') setQuery(runStep >= 1 ? 'Maya' : '');
+    if (type === 'form') { setChecked(runStep >= 2); setSubmitted(runStep >= 3); }
+    if (type === 'tabs') setSelectedTab(runStep >= 1 ? 'Security' : 'Overview');
+  }, [runStep, type]);
   return <div className="demo-shell">
     <div className="demo-browserbar"><span/><span/><span/><div className="demo-url">autolearn.local/{type}</div><button className="icon-mini" onClick={reset} title="Reset demo"><Activity size={13}/></button></div>
     <div className="demo-canvas">
@@ -72,6 +123,24 @@ export default function Home() {
   const [showGenerator,setShowGenerator] = useState(false);
   const [showFilters,setShowFilters] = useState(false);
   const [notice,setNotice] = useState('');
+  const [runStep,setRunStep] = useState(0);
+  const [runStatus,setRunStatus] = useState<'ready'|'running'|'passed'|'failed'>('ready');
+  const [runLogs,setRunLogs] = useState<{kind:'info'|'running'|'pass'|'error';message:string}[]>([]);
+  const previewSteps = useMemo(()=>getPreviewScript(selectedDemo,tool,language),[selectedDemo,tool,language]);
+  const resetPreviewRun = () => {setRunStep(0);setRunStatus('ready');setRunLogs([]);};
+  const runPreviewScript = async () => {
+    if (runStatus === 'running') return;
+    setRunStep(0); setRunStatus('running');
+    setRunLogs([{kind:'info',message:'Starting local preview scenario: '+selectedLesson.title}]);
+    for (let i=0;i<previewSteps.length;i++) {
+      setRunLogs(prev=>[...prev,{kind:'running',message:'Step '+(i+1)+': '+previewSteps[i].label}]);
+      await new Promise(resolve=>window.setTimeout(resolve,550));
+      setRunStep(i+1);
+      setRunLogs(prev=>[...prev,{kind:'pass',message:'Step '+(i+1)+' passed — '+previewSteps[i].label}]);
+    }
+    setRunLogs(prev=>[...prev,{kind:'pass',message:'All '+previewSteps.length+' steps passed in the local preview.'}]);
+    setRunStatus('passed');
+  };
 
   const filteredLessons = useMemo(()=>lessons.filter(l=>{
     const q=search.toLowerCase();
@@ -111,7 +180,7 @@ export default function Home() {
         </section>
         <section className="right-column"><div className="lesson-detail-card"><div className="detail-header"><div><div className="detail-meta"><span className="level-pill beginner">{selectedLesson.difficulty}</span><span className="detail-duration">8–12 min</span><span className="detail-course">{selectedLesson.category}</span></div><h2>{selectedLesson.title}</h2><p>{selectedLesson.description}</p></div><button className={'icon-button '+(bookmarks.includes(selectedLesson.id)?'saved':'')} title={bookmarks.includes(selectedLesson.id)?'Remove bookmark':'Bookmark lesson'} onClick={()=>toggleBookmark(selectedLesson.id)}><Bookmark size={17} fill={bookmarks.includes(selectedLesson.id)?'currentColor':'none'}/></button></div>
             <div className="detail-tabs"><button className={tab==='lesson'?'active':''} onClick={()=>setTab('lesson')}><BookOpen size={14}/> Lesson</button><button className={tab==='preview'?'active':''} onClick={()=>setTab('preview')}><Laptop size={14}/> Live preview <span className="tab-live"/></button><button onClick={()=>{setShowGenerator(true);setComponent(selectedLesson.title);}}><Code2 size={14}/> Script lab</button></div>
-            {tab==='lesson'?<><div className="lesson-section"><div className="lesson-section-title"><span className="section-icon"><GraduationCap size={15}/></span><h3>What you'll learn</h3></div><ul className="objective-list">{selectedLesson.objectives.map(x=><li key={x}><span><Check size={12}/></span>{x}</li>)}</ul></div><div className="lesson-section code-section"><div className="lesson-section-title"><span className="section-icon code"><TerminalSquare size={15}/></span><div><h3>Automation pattern</h3><p>Choose a tool and language to compare the syntax.</p></div></div><div className="code-toolbar"><div className="code-selects"><select aria-label="Automation tool" value={tool} onChange={e=>setTool(e.target.value as Tool)}><option>Playwright</option><option>Selenium</option></select><select aria-label="Programming language" value={language} onChange={e=>setLanguage(e.target.value as Language)}><option>TypeScript</option><option>JavaScript</option><option>Python</option></select></div><button className="code-copy" onClick={()=>doCopy(toolSnippets[tool][language])}>{copied?<Check size={13}/>:<Copy size={13}/>} {copied?'Copied':'Copy'}</button></div><pre className="code-block"><code>{toolSnippets[tool][language]}</code></pre><div className="code-foot"><span><span className="live-dot muted-dot"/> Example snippet · not yet executed</span><button onClick={()=>setShowGenerator(true)}>Generate full POM <ArrowRight size={12}/></button></div></div><div className="lesson-section"><div className="lesson-section-title"><span className="section-icon warning"><CircleHelp size={15}/></span><h3>Watch out for</h3></div><ul className="pitfall-list">{selectedLesson.pitfalls.map(x=><li key={x}>{x}</li>)}</ul></div><div className="detail-footer"><button className={'button-outline '+(completed.includes(selectedLesson.id)?'complete':'')} onClick={()=>markComplete(selectedLesson.id)}>{completed.includes(selectedLesson.id)?<Check size={14}/>:<Check size={14}/>} {completed.includes(selectedLesson.id)?'Lesson completed':'Mark as complete'}</button><button className="button-primary" onClick={()=>setTab('preview')}>Try the demo <ArrowRight size={14}/></button></div></>:<div className="full-preview"><div className="preview-toolbar"><div><span className="live-dot"/> INTERACTIVE PREVIEW</div><span>Local sandbox · Safe to explore</span></div><DemoPreview type={selectedDemo}/><div className="preview-instructions"><strong>Try it yourself</strong><p>Interact with the component. Then switch back to the lesson and map each action to a locator and assertion.</p></div></div>}
+            {tab==='lesson'?<><div className="lesson-section"><div className="lesson-section-title"><span className="section-icon"><GraduationCap size={15}/></span><h3>What you'll learn</h3></div><ul className="objective-list">{selectedLesson.objectives.map(x=><li key={x}><span><Check size={12}/></span>{x}</li>)}</ul></div><div className="lesson-section code-section"><div className="lesson-section-title"><span className="section-icon code"><TerminalSquare size={15}/></span><div><h3>Automation pattern</h3><p>Choose a tool and language to compare the syntax.</p></div></div><div className="code-toolbar"><div className="code-selects"><select aria-label="Automation tool" value={tool} onChange={e=>setTool(e.target.value as Tool)}><option>Playwright</option><option>Selenium</option></select><select aria-label="Programming language" value={language} onChange={e=>setLanguage(e.target.value as Language)}><option>TypeScript</option><option>JavaScript</option><option>Python</option></select></div><button className="code-copy" onClick={()=>doCopy(toolSnippets[tool][language])}>{copied?<Check size={13}/>:<Copy size={13}/>} {copied?'Copied':'Copy'}</button></div><pre className="code-block"><code>{toolSnippets[tool][language]}</code></pre><div className="code-foot"><span><span className="live-dot muted-dot"/> Example snippet · not yet executed</span><button onClick={()=>setShowGenerator(true)}>Generate full POM <ArrowRight size={12}/></button></div></div><div className="lesson-section"><div className="lesson-section-title"><span className="section-icon warning"><CircleHelp size={15}/></span><h3>Watch out for</h3></div><ul className="pitfall-list">{selectedLesson.pitfalls.map(x=><li key={x}>{x}</li>)}</ul></div><div className="detail-footer"><button className={'button-outline '+(completed.includes(selectedLesson.id)?'complete':'')} onClick={()=>markComplete(selectedLesson.id)}>{completed.includes(selectedLesson.id)?<Check size={14}/>:<Check size={14}/>} {completed.includes(selectedLesson.id)?'Lesson completed':'Mark as complete'}</button><button className="button-primary" onClick={()=>setTab('preview')}>Try the demo <ArrowRight size={14}/></button></div></>:<div className="full-preview"><div className="preview-toolbar"><div><span className="live-dot"/> INTERACTIVE PREVIEW</div><span>Local sandbox · Safe to explore</span></div><div className="preview-run-grid"><DemoPreview type={selectedDemo} runStep={runStep} onReset={resetPreviewRun}/><section className="preview-code-panel"><div className="preview-code-head"><div><span className="preview-terminal-dot"/><strong>Automation runner</strong><small>{tool} · {language}</small></div><span className={'run-status '+(runStatus==='passed'?'passed':runStatus==='running'?'running':runStatus==='failed'?'failed':'')}>{runStatus==='passed'?'PASSED':runStatus==='running'?'RUNNING':runStatus==='failed'?'FAILED':'READY'}</span></div><pre className="preview-script"><code>{previewSteps.map((step,i)=><span key={i} className={runStep===i+1&&runStatus==='running'?'script-line active':runStep>i?'script-line executed':'script-line'}><span className="script-line-number">{i+1}</span>{step.code}</span>)}</code></pre><div className="preview-run-actions"><button className="preview-run-button" onClick={runPreviewScript} disabled={runStatus==='running'}><Play size={13}/>{runStatus==='running'?'Running script…':'Run automation'}</button><button className="preview-reset-button" onClick={resetPreviewRun}><Activity size={13}/> Reset</button></div><div className="execution-console"><div className="execution-console-title"><TerminalSquare size={12}/> EXECUTION LOG <span>{runLogs.length} events</span></div>{runLogs.length===0?<p className="execution-empty">Run the sample to watch each step execute against the interactive preview.</p>:<div className="execution-events" aria-live="polite">{runLogs.map((log,i)=><div className={'execution-event '+log.kind} key={i}><span>{log.kind==='pass'?'✓':log.kind==='error'?'×':log.kind==='running'?'›':'·'}</span><code>{log.message}</code></div>)}</div>}</div><p className="preview-runtime-note">Safe browser demo runner: it replays this scenario against the local preview UI. Python/Selenium syntax is shown for learning; this page does not launch a real Python or WebDriver process.</p></section></div><div className="preview-instructions"><strong>Try it yourself</strong><p>Run the sample, watch the preview respond, and follow each execution log entry. Then edit the scenario in your own test project to execute it with a real Playwright or Selenium runtime.</p></div></div>}
           </div><div className="next-lesson"><div className="next-icon"><ArrowRight size={17}/></div><div><span>NEXT IN YOUR PATH</span><strong>{lessons[(selectedIndex+1)%lessons.length].title}</strong><small>Continue building your automation toolkit</small></div><button className="icon-button" onClick={()=>chooseLesson(lessons[(selectedIndex+1)%lessons.length])}><ArrowRight size={16}/></button></div>
         </section></div>
         <footer className="page-footer"><span>AutoLearn QA <span>·</span> Interactive Automation Engineering Lab</span><span><ShieldCheck size={13}/> Built for learning. Run scripts in your own test environment.</span><a href="https://github.com/SanFlash/Satyo-mate" target="_blank" rel="noreferrer">GitHub repository <ArrowRight size={12}/></a></footer>
