@@ -6,7 +6,10 @@ AutoLearn QA is a responsive learning workspace for web UI and end-to-end automa
 
 - Dark/light theme toggle and responsive navigation
 - Expanded searchable curriculum with difficulty filtering across fundamentals, UI components, accessibility, API/network testing, E2E scenarios, debugging, and CI
-- Lesson selection, bookmark toggles, and local completion progress
+- Lesson selection, bookmark toggles, and local completion progress that automatically restores across visits on the same browser
+- Workspace JSON backup and restore for completed lessons, bookmarks, selected lesson, active section, search/filter settings, and theme
+- Keyboard command palette (`Ctrl+K` on Windows/Linux, `⌘K` on macOS) for fast lesson search, navigation, and workspace actions
+- Motion-aware interface transitions that respect `prefers-reduced-motion`
 - Interactive local demos for login, dropdowns, dialogs, forms, tables, and tabs, plus lesson coverage for autocomplete, accordions, tooltips, toasts, pagination, sorting, date/time inputs, keyboard focus, iframes, Shadow DOM, responsive layouts, and more
 - Tool/language snippet switching
 - Expanded project generator selectors for 30+ component/scenario types and 20 action patterns, across all six tool-language combinations
@@ -74,7 +77,7 @@ docs/
 
 ## Test Design Studio
 
-Open `/test-studio` from the dashboard to manage test cases and coverage. Edit titles, areas, priority, status, preconditions, action steps, expected results, and tags. Search and filter the inventory, inspect the coverage matrix, and generate a test-code scaffold for the selected filtered cases. Your plan autosaves in the current browser; use JSON export for backup or transfer and JSON import to restore a plan. CSV export is intended for spreadsheet review.
+Open `/test-studio` from the dashboard to manage test cases and coverage. Edit titles, areas, priority, status, preconditions, action steps, expected results, and tags. Search and filter the inventory, inspect the coverage matrix, and generate a test-code scaffold for the selected filtered cases. Your plan autosaves in the current browser; use JSON export for backup or transfer and JSON import to restore a plan. The main learning workspace separately restores lesson progress, bookmarks, theme, and navigation preferences from browser storage; use the dashboard Backup/Restore controls to move that workspace between browsers. CSV export is intended for spreadsheet review.
 
 The area coverage percentage measures whether at least one case exists in each built-in coverage area. It is a planning signal, not a requirements traceability proof or a claim that the application is fully tested. Generated code preserves test intent but still requires real locators, fixtures, and assertions.
 
@@ -90,7 +93,7 @@ The output is a scaffold: add target-specific selectors, test data, scenario seq
 - Add requirement-to-test traceability IDs, execution history, and richer report export
 - Add curated end-to-end scenarios that automatically sequence selected POM methods
 - Add generator unit tests and run generated samples against a deterministic local demo
-- Add optional persistent progress and saved framework storage
+- Add cloud-synced progress for signed-in learners and saved framework recipes
 
 ## Architecture boundary
 
