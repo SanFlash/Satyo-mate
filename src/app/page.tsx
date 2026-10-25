@@ -148,7 +148,6 @@ export default function Home() {
   const [runStep,setRunStep] = useState(0);
   const [runStatus,setRunStatus] = useState<'ready'|'running'|'passed'|'failed'>('ready');
   const [runLogs,setRunLogs] = useState<{kind:'info'|'running'|'pass'|'error';message:string}[]>([]);
-  const previewSteps = useMemo(()=>getPreviewScript(selectedDemo,tool,language),[selectedDemo,tool,language]);
   const resetPreviewRun = () => {setRunStep(0);setRunStatus('ready');setRunLogs([]);};
   const runPreviewScript = async () => {
     if (runStatus === 'running') return;
@@ -174,6 +173,7 @@ export default function Home() {
   const selectedLesson=lessons.find(l=>l.id===selectedId)||lessons[0];
   const selectedIndex=lessons.findIndex(l=>l.id===selectedLesson.id);
   const selectedDemo=(selectedLesson.demo||'login') as DemoType;
+  const previewSteps = useMemo(()=>getPreviewScript(selectedDemo,tool,language),[selectedDemo,tool,language]);
   const generatedFiles=generated.length?generated:generateProject({tool,language,component,action,pom,framework,url});
   const currentCode=codeTab==='page'?generatedFiles[0]?.content:codeTab==='config'?generatedFiles[generatedFiles.length-1]?.content:generatedFiles[Math.min(1,generatedFiles.length-1)]?.content;
   const progress=Math.round(completed.length/lessons.length*100);
