@@ -234,3 +234,10 @@ html{scroll-behavior:smooth;scroll-padding-top:78px}
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
 }
+
+/* Portable workspace backup controls */
+.sidebar-backup-actions{display:flex;gap:7px;margin:0 1px 10px}
+.sidebar-backup-actions button{display:inline-flex;align-items:center;justify-content:center;gap:6px;flex:1;min-width:0;padding:8px 6px;border:1px solid var(--line);border-radius:7px;background:var(--panel);color:var(--text2);font-size:10px;transition:background .18s,border-color .18s,color .18s}
+.sidebar-backup-actions button:hover{border-color:var(--accent);color:var(--accent);background:var(--panel2)}
+.sidebar-bottom small{line-height:1.4}
+@media(max-width:760px){.sidebar-backup-actions{margin-top:4px}.sidebar-backup-actions button{padding:10px 7px}}
