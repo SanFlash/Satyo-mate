@@ -10,6 +10,9 @@ AutoLearn QA is a responsive learning workspace for web UI and end-to-end automa
 - Interactive local demos for login, dropdowns, dialogs, forms, tables, and tabs, plus lesson coverage for autocomplete, accordions, tooltips, toasts, pagination, sorting, date/time inputs, keyboard focus, iframes, Shadow DOM, responsive layouts, and more
 - Tool/language snippet switching
 - Expanded project generator selectors for 30+ component/scenario types and 20 action patterns, across all six tool-language combinations
+- A dedicated Test Design Studio at `/test-studio` with 12 editable starter cases spanning authentication, forms, accessibility, responsive UI, tables, dialogs, API, uploads, security, e-commerce, and error handling
+- Test Design Studio inventory search and filters, P0–P3 risk priorities, execution status tracking, coverage map, and browser-local autosave
+- Import/export test plans as JSON, export test case matrices as CSV, and generate a Playwright/Selenium code scaffold in Python, JavaScript, or TypeScript
 - A dedicated composable framework builder at `/framework-builder` with a searchable 50+ atomic-action library, action-group filters, bulk selection, and Page Object Model scaffold generation
 - Framework builder output includes page-object source, a composed test scaffold, setup/configuration files where supported, README, file preview, copy, and individual downloads
 - Individual generated-file downloads and copy controls
@@ -56,6 +59,9 @@ Vercel Git integration can automatically create preview deployments for branches
 ```text
 src/
   app/
+    api/health/route.ts
+    framework-builder/page.tsx
+    test-studio/page.tsx
     globals.css
     layout.tsx
     page.tsx
@@ -66,6 +72,12 @@ docs/
   PRODUCT_SPEC.md
 ```
 
+## Test Design Studio
+
+Open `/test-studio` from the dashboard to manage test cases and coverage. Edit titles, areas, priority, status, preconditions, action steps, expected results, and tags. Search and filter the inventory, inspect the coverage matrix, and generate a test-code scaffold for the selected filtered cases. Your plan autosaves in the current browser; use JSON export for backup or transfer and JSON import to restore a plan. CSV export is intended for spreadsheet review.
+
+The area coverage percentage measures whether at least one case exists in each built-in coverage area. It is a planning signal, not a requirements traceability proof or a claim that the application is fully tested. Generated code preserves test intent but still requires real locators, fixtures, and assertions.
+
 ## Composable framework builder
 
 Open `/framework-builder` from the dashboard. Choose the automation tool, language, project name, and base URL. Search/filter the atomic action library, select individual actions or batches, then assemble selected actions into a Page Object Model class and starter test/configuration files. Generated files can be previewed, copied, and downloaded individually.
@@ -75,6 +87,7 @@ The output is a scaffold: add target-specific selectors, test data, scenario seq
 ## Next improvements
 
 - Add a ZIP bundle export and persistent saved framework recipes
+- Add requirement-to-test traceability IDs, execution history, and richer report export
 - Add curated end-to-end scenarios that automatically sequence selected POM methods
 - Add generator unit tests and run generated samples against a deterministic local demo
 - Add optional persistent progress and saved framework storage
