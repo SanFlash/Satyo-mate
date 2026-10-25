@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo, useState, useEffect, useRef } from 'react';
-import { Activity, ArrowDownToLine, ArrowRight, BookOpen, Bookmark, Check, ChevronDown, ChevronRight, CircleHelp, Code2, Copy, Filter, FlaskConical, Gauge, GraduationCap, Laptop, Layers3, Menu, Moon, Play, Search, Settings2, ShieldCheck, Sparkles, Sun, TerminalSquare, X } from 'lucide-react';
+import { Activity, ArrowDownToLine, ArrowRight, BookOpen, Bookmark, Check, ChevronDown, ChevronRight, CircleHelp, Code2, Copy, Filter, FlaskConical, Gauge, GraduationCap, Laptop, Layers3, Menu, Moon, Play, Search, Settings2, ShieldCheck, Sparkles, Sun, TerminalSquare, Upload, X } from 'lucide-react';
 import { lessons, navGroups, type Lesson, type Language, type Tool } from '@/lib/catalog';
 import { generateProject } from '@/lib/generator';
 
