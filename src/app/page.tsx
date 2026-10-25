@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState, useEffect } from 'react';
+import { useMemo, useState, useEffect, useRef } from 'react';
 import { Activity, ArrowDownToLine, ArrowRight, BookOpen, Bookmark, Check, ChevronDown, ChevronRight, CircleHelp, Code2, Copy, Filter, FlaskConical, Gauge, GraduationCap, Laptop, Layers3, Menu, Moon, Play, Search, Settings2, ShieldCheck, Sparkles, Sun, TerminalSquare, X } from 'lucide-react';
 import { lessons, navGroups, type Lesson, type Language, type Tool } from '@/lib/catalog';
 import { generateProject } from '@/lib/generator';
@@ -134,6 +134,8 @@ export default function Home() {
   const [component,setComponent] = useState('Login form');
   const [url,setUrl] = useState('http://127.0.0.1:3000/demo');
   const [bookmarks,setBookmarks] = useState<string[]>([]);
+  const [hydrated,setHydrated] = useState(false);
+  const backupInputRef = useRef<HTMLInputElement>(null);
   const [completed,setCompleted] = useState<string[]>([]);
   const [tab,setTab] = useState<'lesson'|'preview'>('lesson');
   const [codeTab,setCodeTab] = useState<'page'|'test'|'config'>('test');
@@ -151,6 +153,27 @@ export default function Home() {
   const [runStatus,setRunStatus] = useState<'ready'|'running'|'passed'|'failed'>('ready');
   const [runLogs,setRunLogs] = useState<{kind:'info'|'running'|'pass'|'error';message:string}[]>([]);
   useEffect(()=>{
+    try {
+      const raw=window.localStorage.getItem('autolearn-qa-workspace-v2');
+      if(raw){
+        const saved=JSON.parse(raw) as {selectedId?:string;activeNav?:string;search?:string;difficulty?:string;bookmarks?:string[];completed?:string[];dark?:boolean};
+        if(saved.selectedId&&lessons.some(l=>l.id===saved.selectedId))setSelectedId(saved.selectedId);
+        if(typeof saved.activeNav==='string')setActiveNav(saved.activeNav);
+        if(typeof saved.search==='string')setSearch(saved.search);
+        if(typeof saved.difficulty==='string')setDifficulty(saved.difficulty);
+        if(Array.isArray(saved.bookmarks))setBookmarks(saved.bookmarks.filter(id=>lessons.some(l=>l.id===id)));
+        if(Array.isArray(saved.completed))setCompleted(saved.completed.filter(id=>lessons.some(l=>l.id===id)));
+        if(typeof saved.dark==='boolean')setDark(saved.dark);
+      }
+    } catch { /* Ignore invalid or unavailable local workspace data. */ }
+    setHydrated(true);
+  },[]);
+  useEffect(()=>{
+    if(!hydrated)return;
+    try { window.localStorage.setItem('autolearn-qa-workspace-v2',JSON.stringify({version:2,selectedId,activeNav,search,difficulty,bookmarks,completed,dark,updatedAt:new Date().toISOString()})); }
+    catch { /* Private browsing or quota restrictions should not block learning. */ }
+  },[hydrated,selectedId,activeNav,search,difficulty,bookmarks,completed,dark]);
+  useEffect(()=>{
     const handleShortcut=(event:KeyboardEvent)=>{
       if((event.metaKey||event.ctrlKey)&&event.key.toLowerCase()==='k'){event.preventDefault();setCommandOpen(true);setCommandQuery('');}
       if(event.key==='Escape'){setCommandOpen(false);setCommandQuery('');setSidebarOpen(false);}
@@ -158,6 +181,31 @@ export default function Home() {
     window.addEventListener('keydown',handleShortcut);
     return ()=>window.removeEventListener('keydown',handleShortcut);
   },[]);
+
+  const exportWorkspace=()=>{
+    const payload={schema:'autolearn-qa-workspace',version:2,exportedAt:new Date().toISOString(),selectedId,activeNav,search,difficulty,bookmarks,completed,dark};
+    const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
+    const href=URL.createObjectURL(blob);const anchor=document.createElement('a');anchor.href=href;anchor.download='autolearn-qa-workspace.json';anchor.click();URL.revokeObjectURL(href);
+    setNotice('Workspace backup exported. Keep the JSON file to restore your progress later.');
+  };
+  const importWorkspace=(file:File)=>{
+    const reader=new FileReader();
+    reader.onload=()=>{
+      try {
+        const data=JSON.parse(String(reader.result)) as {schema?:string;version?:number;selectedId?:string;activeNav?:string;search?:string;difficulty?:string;bookmarks?:string[];completed?:string[];dark?:boolean};
+        if(data.schema!=='autolearn-qa-workspace'||![1,2].includes(data.version||0))throw new Error('Unsupported backup format');
+        if(data.selectedId&&lessons.some(l=>l.id===data.selectedId))setSelectedId(data.selectedId);
+        if(typeof data.activeNav==='string')setActiveNav(data.activeNav);
+        if(typeof data.search==='string')setSearch(data.search);
+        if(typeof data.difficulty==='string')setDifficulty(data.difficulty);
+        if(Array.isArray(data.bookmarks))setBookmarks(data.bookmarks.filter(id=>lessons.some(l=>l.id===id)));
+        if(Array.isArray(data.completed))setCompleted(data.completed.filter(id=>lessons.some(l=>l.id===id)));
+        if(typeof data.dark==='boolean')setDark(data.dark);
+        setNotice('Workspace backup imported successfully. Your local learning workspace has been restored.');
+      } catch { setNotice('Import failed: choose a valid AutoLearn QA workspace JSON backup.'); }
+    };
+    reader.onerror=()=>setNotice('The selected backup file could not be read.');reader.readAsText(file);
+  };
 
   const resetPreviewRun = () => {setRunStep(0);setRunStatus('ready');setRunLogs([]);};
   const runPreviewScript = async () => {
@@ -200,7 +248,7 @@ export default function Home() {
     <header className="topbar"><button className="mobile-menu icon-button" onClick={()=>setSidebarOpen(!sidebarOpen)} aria-label="Toggle navigation"><Menu size={19}/></button><button className="brand" onClick={()=>{setActiveNav('Dashboard');setSearch('');}}><span className="brand-symbol"><Code2 size={19}/></span><span><strong>AutoLearn<span> QA</span></strong><small>ENGINEERING LAB</small></span></button><div className="topbar-divider"/><div className="top-search"><Search size={16}/><input value={search} onChange={e=>setSearch(e.target.value)} placeholder="Search lessons, elements, actions..." aria-label="Search curriculum"/><button className="command-shortcut" onClick={()=>{setCommandOpen(true);setCommandQuery('');}} aria-label="Open command palette"><kbd>Ctrl K / ⌘ K</kbd></button></div><div className="top-actions"><span className="top-version"><span className="live-dot"/> Learning mode</span><button className="icon-button" title="Toggle theme" onClick={()=>setDark(!dark)}>{dark?<Sun size={17}/>:<Moon size={17}/>}</button><button className="avatar-button" title="Learner profile">S</button></div></header>
     {sidebarOpen&&<button className="sidebar-scrim" onClick={()=>setSidebarOpen(false)} aria-label="Close navigation"/>}
     <div className="app-layout">
-      <aside className={'sidebar '+(sidebarOpen?'sidebar-open':'')}><div className="sidebar-caption">WORKSPACE</div>{navGroups.map(group=><div className="nav-group" key={group.title}><div className="nav-group-title">{group.title}</div>{group.items.map(item=><button key={item} className={'nav-item '+(activeNav===item?'active':'')} onClick={()=>{setActiveNav(item);setSidebarOpen(false);if(item==='Progress & Bookmarks')setSearch('');}}>{navIcon[item]||<BookOpen size={16}/>}<span>{item}</span>{item==='Progress & Bookmarks'&&<span className="nav-count">{bookmarks.length}</span>}</button>)}</div>)}<div className="nav-group workspace-links"><div className="nav-group-title">QA WORKSPACES</div><button className="nav-item" onClick={()=>{window.location.href='/test-studio';setSidebarOpen(false);}}><FlaskConical size={16}/><span>Test Design Studio</span><ArrowRight size={12}/></button><button className="nav-item" onClick={()=>{window.location.href='/framework-builder';setSidebarOpen(false);}}><Layers3 size={16}/><span>Framework Builder</span><ArrowRight size={12}/></button></div><div className="sidebar-spacer"/><div className="sidebar-progress"><div className="progress-top"><span>YOUR PROGRESS</span><strong>{progress}%</strong></div><div className="progress-track"><i style={{width:`${progress}%`}}/></div><p>{completed.length} of {lessons.length} starter lessons complete</p><button onClick={()=>setActiveNav('Progress & Bookmarks')}>View learning stats <ArrowRight size={13}/></button></div><div className="sidebar-bottom"><div className="sidebar-avatar">SN</div><div><strong>Learning workspace</strong><small>Personal practice</small></div><button className="icon-mini" title="Workspace settings" onClick={()=>setNotice('Settings: progress is stored locally in this browser for this starter version.')}><Settings2 size={15}/></button></div></aside>
+      <aside className={'sidebar '+(sidebarOpen?'sidebar-open':'')}><div className="sidebar-caption">WORKSPACE</div>{navGroups.map(group=><div className="nav-group" key={group.title}><div className="nav-group-title">{group.title}</div>{group.items.map(item=><button key={item} className={'nav-item '+(activeNav===item?'active':'')} onClick={()=>{setActiveNav(item);setSidebarOpen(false);if(item==='Progress & Bookmarks')setSearch('');}}>{navIcon[item]||<BookOpen size={16}/>}<span>{item}</span>{item==='Progress & Bookmarks'&&<span className="nav-count">{bookmarks.length}</span>}</button>)}</div>)}<div className="nav-group workspace-links"><div className="nav-group-title">QA WORKSPACES</div><button className="nav-item" onClick={()=>{window.location.href='/test-studio';setSidebarOpen(false);}}><FlaskConical size={16}/><span>Test Design Studio</span><ArrowRight size={12}/></button><button className="nav-item" onClick={()=>{window.location.href='/framework-builder';setSidebarOpen(false);}}><Layers3 size={16}/><span>Framework Builder</span><ArrowRight size={12}/></button></div><div className="sidebar-spacer"/><div className="sidebar-progress"><div className="progress-top"><span>YOUR PROGRESS</span><strong>{progress}%</strong></div><div className="progress-track"><i style={{width:`${progress}%`}}/></div><p>{completed.length} of {lessons.length} starter lessons complete</p><button onClick={()=>setActiveNav('Progress & Bookmarks')}>View learning stats <ArrowRight size={13}/></button></div><div className="sidebar-backup-actions"><button onClick={exportWorkspace} title="Export learning progress"><ArrowDownToLine size={13}/> Backup</button><button onClick={()=>backupInputRef.current?.click()} title="Import learning progress"><Upload size={13}/> Restore</button><input ref={backupInputRef} type="file" accept="application/json,.json" hidden onChange={e=>{const file=e.target.files?.[0];if(file)importWorkspace(file);e.currentTarget.value='';}}/></div><div className="sidebar-bottom"><div className="sidebar-avatar">SN</div><div><strong>Learning workspace</strong><small>{hydrated?'Saved on this device':'Restoring workspace…'}</small></div><button className="icon-mini" title="Workspace settings" onClick={()=>setNotice('Your progress, bookmarks, theme and current lesson are saved locally. Use Backup to export a portable JSON copy.')}><Settings2 size={15}/></button></div></aside>
       <main className="main-area">
         <div className="breadcrumbs"><span>AutoLearn QA</span><ChevronRight size={13}/><span>{activeNav==='Dashboard'?'Learning dashboard':activeNav}</span>{activeNav==='Dashboard'&&<><ChevronRight size={13}/><strong>Overview</strong></>}</div>
         <section className="welcome-row"><div><div className="eyebrow"><Sparkles size={14}/> YOUR AUTOMATION JOURNEY</div><h1>{activeNav==='Dashboard'?'Build better tests.':activeNav==='Progress & Bookmarks'?'Your learning progress.':activeNav==='Practice Lab'?'Practice by doing.':activeNav+'.'}</h1><p className="welcome-sub">Learn the why, explore the how, and build maintainable automation with real examples.</p></div><div className="welcome-cta"><button className="button-primary" onClick={()=>setShowGenerator(true)}><Code2 size={15}/> Generate a script <ArrowRight size={14}/></button><a className="button-outline small" href="/framework-builder"><Layers3 size={14}/> Build a POM framework <ArrowRight size={13}/></a><a className="button-outline small" href="/test-studio"><ShieldCheck size={14}/> Test Design Studio <ArrowRight size={13}/></a><span><ShieldCheck size={13}/> POM-first · Vercel-ready curriculum</span></div></section>
