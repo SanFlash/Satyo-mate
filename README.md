@@ -1,108 +1,280 @@
-# QA Nexus — Learn · Practice · Build · Automate
+<div align="center">
 
-QA Nexus, created by **Satyendra Kumar Namdeo**, is a responsive learning workspace for web UI and end-to-end automation. It combines a structured curriculum, interactive local demo components, and starter project generation for Selenium and Playwright using Python, JavaScript, and TypeScript.
+<img src="public/qa-nexus-logo.svg" alt="QA Nexus logo" width="190" />
 
-## Current starter features
+# QA Nexus
 
-- Dark/light theme toggle and responsive navigation
-- Expanded searchable curriculum with difficulty filtering across fundamentals, UI components, accessibility, API/network testing, E2E scenarios, debugging, and CI
-- Lesson selection, bookmark toggles, and local completion progress that automatically restores across visits on the same browser
-- Workspace JSON backup and restore for completed lessons, bookmarks, selected lesson, active section, search/filter settings, and theme
-- Keyboard command palette (`Ctrl+K` on Windows/Linux, `⌘K` on macOS) for fast lesson search, navigation, and workspace actions
-- Contextual, keyboard/touch-accessible tooltips across the dashboard, Test Design Studio, generator, and framework builder to explain metrics, settings, coverage, and execution boundaries
-- Motion-aware interface transitions that respect `prefers-reduced-motion`
-- Interactive local demos for login, dropdowns, dialogs, forms, tables, and tabs, plus lesson coverage for autocomplete, accordions, tooltips, toasts, pagination, sorting, date/time inputs, keyboard focus, iframes, Shadow DOM, responsive layouts, and more
+### Learn · Practice · Build · Automate
+
+**A hands-on workspace for learning QA engineering and building better automation.**
+
+Created with care by **Satyendra Kumar Namdeo**
+
+<p>
+  <a href="https://github.com/SanFlash/Satyo-mate/actions"><img alt="GitHub Actions" src="https://img.shields.io/github/actions/workflow/status/SanFlash/Satyo-mate/ci.yml?style=for-the-badge&label=build" /></a>
+  <a href="https://github.com/SanFlash/Satyo-mate"><img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/SanFlash/Satyo-mate?style=for-the-badge&color=6c63ff" /></a>
+  <a href="https://github.com/SanFlash/Satyo-mate/commits/main"><img alt="Last commit" src="https://img.shields.io/github/last-commit/SanFlash/Satyo-mate?style=for-the-badge&color=24c8db" /></a>
+  <img alt="Next.js" src="https://img.shields.io/badge/Next.js-App_Router-black?style=for-the-badge&logo=next.js" />
+  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-Ready-3178c6?style=for-the-badge&logo=typescript&logoColor=white" />
+</p>
+
+[Explore the code](https://github.com/SanFlash/Satyo-mate) · [Report a bug](https://github.com/SanFlash/Satyo-mate/issues) · [Request a feature](https://github.com/SanFlash/Satyo-mate/issues/new)
+
+</div>
+
+---
+
+## ✨ Welcome to QA Nexus
+
+QA Nexus is a responsive learning environment for web UI testing and end-to-end automation. Explore practical lessons, experiment with interactive demos, design test cases, and generate starter frameworks for **Playwright** and **Selenium**.
+
+> [!IMPORTANT]
+> QA Nexus teaches and generates starter code. The hosted interface does **not** execute real browser automation scripts. Generated examples must be adapted and tested in your own local or CI environment.
+
+## 🧭 Navigate the README
+
+<details open>
+<summary><strong>Jump to a section</strong></summary>
+
+- [Highlights](#-highlights)
+- [Screens and workspaces](#-screens-and-workspaces)
+- [Tech stack](#-tech-stack)
+- [Run locally](#-run-locally)
+- [Project structure](#-project-structure)
+- [How to use the tools](#-how-to-use-the-tools)
+- [Deployment](#-deployment)
+- [Creator](#-creator)
+- [Roadmap](#-roadmap)
+- [Contributing](#-contributing)
+
+</details>
+
+## 🚀 Highlights
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### 📚 Interactive learning
+- Curated curriculum with 42 starter lessons
+- Search, difficulty filters, bookmarks, and progress tracking
+- Interactive demos for forms, dropdowns, dialogs, tables, tabs, and more
+- Dark/light theme and responsive navigation
+- Keyboard command palette: `Ctrl+K` / `⌘K`
+
+</td>
+<td width="50%" valign="top">
+
+### 🧪 Test Design Studio
+- Editable starter test cases across common QA areas
+- P0–P3 risk priorities and execution status tracking
+- Coverage map, search, and filters
+- JSON import/export and CSV export
+- Playwright/Selenium code scaffold generation
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### 🧱 Framework Builder
+- Searchable library of 50+ atomic actions
+- Choose tool, language, project name, and base URL
+- Assemble Page Object Model starter files
+- Preview, copy, and download generated files
+
+</td>
+<td width="50%" valign="top">
+
+### ⚡ Built for daily practice
 - Tool/language snippet switching
-- Expanded project generator selectors for 30+ component/scenario types and 20 action patterns, across all six tool-language combinations
-- A dedicated Test Design Studio at `/test-studio` with 12 editable starter cases spanning authentication, forms, accessibility, responsive UI, tables, dialogs, API, uploads, security, e-commerce, and error handling
-- Test Design Studio inventory search and filters, P0–P3 risk priorities, execution status tracking, coverage map, and browser-local autosave
-- Import/export test plans as JSON, export test case matrices as CSV, and generate a Playwright/Selenium code scaffold in Python, JavaScript, or TypeScript
-- A dedicated composable framework builder at `/framework-builder` with a searchable 50+ atomic-action library, action-group filters, bulk selection, and Page Object Model scaffold generation
-- Framework builder output includes page-object source, a composed test scaffold, setup/configuration files where supported, README, file preview, copy, and individual downloads
-- Individual generated-file downloads and copy controls
-- Vercel-compatible Next.js app structure
+- Contextual tooltips and helpful settings
+- Workspace backup and restore
+- Responsive layout for desktop, tablet, and mobile
+- Motion preferences that respect `prefers-reduced-motion`
 
-> Generated templates are starter examples, not yet execution-verified. Their selectors and URLs must match a real local demo application before use. This interface does not run browser scripts.
+</td>
+</tr>
+</table>
 
-## Brand & creator
+## 🖥️ Screens and workspaces
 
-- Product name: QA Nexus
-- Tagline: Learn · Practice · Build · Automate
-- Creator: Satyendra Kumar Namdeo\n- The creator name is shown in the application header and workspace branding.
-- Logo and animated branded intro are included in the application.
+| Workspace | What it helps you do |
+|---|---|
+| **Learning dashboard** | Follow lessons, explore examples, bookmark topics, and track local progress |
+| **Test Design Studio** — `/test-studio` | Organize test cases, set priorities, inspect coverage, and export plans |
+| **Framework Builder** — `/framework-builder` | Compose a starter Page Object Model framework and download its files |
 
-## Stack
+## 🛠️ Tech stack
 
-- Next.js App Router, React, TypeScript
-- Lucide icons
+<p>
+<img alt="Next.js" src="https://img.shields.io/badge/Next.js-App_Router-111111?logo=next.js" />
+<img alt="React" src="https://img.shields.io/badge/React-UI-149eca?logo=react&logoColor=white" />
+<img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-Language-3178c6?logo=typescript&logoColor=white" />
+<img alt="Lucide" src="https://img.shields.io/badge/Lucide-Icons-f59e0b" />
+<img alt="CSS" src="https://img.shields.io/badge/CSS-Responsive-663399?logo=css3&logoColor=white" />
+</p>
+
+- Next.js App Router and React
+- TypeScript and Lucide icons
 - Custom responsive CSS
 - Versioned lesson data and deterministic starter templates
 
-## Run locally
+## 💻 Run locally
 
-Use Node.js 20 or newer.
+### Prerequisites
+
+- Node.js 20 or newer
+- npm
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/SanFlash/Satyo-mate.git
+cd Satyo-mate
+```
+
+### 2. Install dependencies
 
 ```bash
 npm install
+```
+
+### 3. Start the development server
+
+```bash
 npm run dev
 ```
 
-Open `http://localhost:3000`.
+Open [http://localhost:3000](http://localhost:3000).
 
-Check the production build with:
+### 4. Validate before sharing
 
 ```bash
-npm run build
 npm run typecheck
+npm run build
 ```
 
-## Deploy to Vercel
+## 🧩 How to use the tools
 
-1. Import `SanFlash/Satyo-mate` into your Vercel account.
-2. Set the project root directory to the repository root.
-3. Use the Next.js framework preset and the default build command (`next build`).
-4. Deploy. No environment variables are required for the current anonymous learning starter.
+<details>
+<summary><strong>Learning dashboard</strong></summary>
 
-Vercel Git integration can automatically create preview deployments for branches and deploy the production branch. The Vercel Git project connection is not yet confirmed for this repository.
+1. Search or filter the curriculum.
+2. Select a lesson to read the guide and explore its demo.
+3. Bookmark topics you want to revisit.
+4. Use the command palette for quick navigation.
+5. Back up or restore your workspace with the available JSON controls.
 
-## Project structure
+Progress and bookmarks are stored in the current browser unless you export a backup.
+
+</details>
+
+<details>
+<summary><strong>Test Design Studio</strong></summary>
+
+1. Open `/test-studio` from the dashboard.
+2. Create or edit test cases, preconditions, steps, expected results, tags, priority, and status.
+3. Search and filter your test inventory.
+4. Review the coverage map as a planning aid.
+5. Export a JSON backup or CSV matrix, or generate a starter code scaffold.
+
+Coverage indicates whether built-in areas have at least one case; it is not proof of complete requirements traceability or full application testing.
+
+</details>
+
+<details>
+<summary><strong>Framework Builder</strong></summary>
+
+1. Open `/framework-builder`.
+2. Select the automation tool and programming language.
+3. Enter a project name and target base URL.
+4. Search and select reusable actions.
+5. Assemble the Page Object Model scaffold, preview the files, then copy or download them.
+
+Before execution, add real selectors, fixtures, test data, assertions, scenario sequencing, and any missing extension-point implementations.
+
+</details>
+
+## 📁 Project structure
 
 ```text
 src/
-  app/
-    api/health/route.ts
-    framework-builder/page.tsx
-    test-studio/page.tsx
-    globals.css
-    layout.tsx
-    page.tsx
-  lib/
-    catalog.ts
-    generator.ts
-docs/
-  PRODUCT_SPEC.md
+├── app/
+│   ├── api/health/route.ts
+│   ├── framework-builder/page.tsx
+│   ├── test-studio/page.tsx
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
+├── components/
+│   └── brand-intro.tsx
+└── lib/
+    ├── catalog.ts
+    └── generator.ts
+public/
+└── qa-nexus-logo.svg
 ```
 
-## Test Design Studio
+## 🚀 Deployment
 
-Open `/test-studio` from the dashboard to manage test cases and coverage. Edit titles, areas, priority, status, preconditions, action steps, expected results, and tags. Search and filter the inventory, inspect the coverage matrix, and generate a test-code scaffold for the selected filtered cases. Your plan autosaves in the current browser; use JSON export for backup or transfer and JSON import to restore a plan. The main learning workspace separately restores lesson progress, bookmarks, theme, and navigation preferences from browser storage; use the dashboard Backup/Restore controls to move that workspace between browsers. CSV export is intended for spreadsheet review.
+QA Nexus uses a Next.js-compatible deployment setup.
 
-The area coverage percentage measures whether at least one case exists in each built-in coverage area. It is a planning signal, not a requirements traceability proof or a claim that the application is fully tested. Generated code preserves test intent but still requires real locators, fixtures, and assertions.
+1. Import [this GitHub repository](https://github.com/SanFlash/Satyo-mate) into Vercel.
+2. Set the project root to the repository root.
+3. Select the Next.js framework preset.
+4. Use the default build command, `next build`.
+5. Deploy the production branch.
 
-## Composable framework builder
+The current anonymous learning starter does not require environment variables. Confirm the Git integration and production deployment status in your Vercel project.
 
-Open `/framework-builder` from the dashboard. Choose the automation tool, language, project name, and base URL. Search/filter the atomic action library, select individual actions or batches, then assemble selected actions into a Page Object Model class and starter test/configuration files. Generated files can be previewed, copied, and downloaded individually.
+## 👤 Creator
 
-The output is a scaffold: add target-specific selectors, test data, scenario sequencing, assertions, and any marked extension-point implementations before running it. The hosted site does not execute generated browser scripts.
+<div align="center">
 
-## Next improvements
+<img src="public/qa-nexus-logo.svg" alt="QA Nexus" width="100" />
 
-- Add a ZIP bundle export and persistent saved framework recipes
-- Add requirement-to-test traceability IDs, execution history, and richer report export
-- Add curated end-to-end scenarios that automatically sequence selected POM methods
-- Add generator unit tests and run generated samples against a deterministic local demo
-- Add cloud-synced progress for signed-in learners and saved framework recipes
+### Satyendra Kumar Namdeo
 
-## Architecture boundary
+**Creator of QA Nexus**
 
-The Vercel-hosted site is the learning interface. Actual Playwright/Selenium execution should happen locally, in CI, or in a separately isolated browser runner. Do not run arbitrary generated code inside the user-facing page or an unrestricted serverless function.
+Building practical tools for QA learning, test design, and automation engineering.
+
+[GitHub profile](https://github.com/SanFlash) · [Project repository](https://github.com/SanFlash/Satyo-mate)
+
+</div>
+
+## 🗺️ Roadmap
+
+- [ ] ZIP export for complete generated frameworks
+- [ ] Requirement-to-test traceability IDs
+- [ ] Execution history and richer report exports
+- [ ] More curated end-to-end scenarios
+- [ ] Unit tests for generated templates and deterministic demo flows
+- [ ] Optional cloud-synced progress and saved framework recipes
+
+## 🤝 Contributing
+
+Ideas, bug reports, and improvements are welcome.
+
+1. Open an [issue](https://github.com/SanFlash/Satyo-mate/issues) describing the problem or idea.
+2. Create a focused branch for your change.
+3. Run `npm run typecheck` and `npm run build`.
+4. Open a pull request with a clear summary and testing notes.
+
+## 📜 Project boundaries
+
+- Generated templates are starter examples, not guaranteed production-ready tests.
+- Selectors and URLs must match the target application.
+- Real Playwright/Selenium execution should happen locally, in CI, or in a separately isolated browser runner.
+- Do not run arbitrary generated code inside the user-facing page or an unrestricted serverless function.
+
+---
+
+<div align="center">
+
+**QA Nexus** · Learn · Practice · Build · Automate
+
+Made by **Satyendra Kumar Namdeo** with a focus on better QA learning.
+
+</div>
