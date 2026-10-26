@@ -121,6 +121,20 @@ QA Nexus turns QA learning into a practical workflow: **learn a concept → expl
 </tr>
 </table>
 
+## 🌀 Motion system — a GSAP-inspired QA orbit
+
+<div align="center">
+
+<img src="docs/qa-nexus-motion-orbit.svg" width="100%" alt="Animated 3D orbit illustration showing QA Nexus learning, test design, framework building and practice nodes connected by a glowing motion path around a central quality-engineering core" />
+
+**Learn → Design → Build → Practice → Improve**
+
+</div>
+
+This visual uses a lightweight animated SVG with layered depth, orbiting nodes, moving light trails, pulsing checkpoints, and rotating geometry. It is designed to communicate the product workflow—not to imply that the README runs the application's tests.
+
+> **Animation note:** GitHub README content cannot execute embedded JavaScript or GSAP timelines. These graphics use SVG/CSS-style animation so the README remains portable and self-contained. GSAP can be used in the actual Next.js interface if richer, scroll-triggered interactions are added there.
+
 ## 🧰 Your QA workbench
 
 <div align="center">
