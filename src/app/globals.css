@@ -278,46 +278,25 @@ html{scroll-behavior:smooth;scroll-padding-top:78px}
 @media(prefers-reduced-motion:reduce){.brand-intro,.brand-intro__content,.brand-intro__logo,.brand-intro__progress i,.brand-intro:before,.brand-intro:after{animation-duration:.01ms!important;animation-iteration-count:1!important}.brand-intro__creator{transition:none}}
 
 
-/* QA Nexus cinematic loader: draw the Q, animate the robot, then bring the command prompt forward */
-.brand-intro{animation-duration:.55s;animation-delay:5.65s;background:radial-gradient(ellipse at 50% 42%,#122e66 0%,#080f2b 47%,#02040d 100%)}
-.brand-intro__content{width:min(100%,620px);padding:18px 22px;animation:brand-scene-arrive .85s cubic-bezier(.16,.84,.3,1) both}
-.brand-intro__stars{position:absolute;inset:0;opacity:.5;background-image:radial-gradient(circle at 17% 24%,#77dfff 0 1px,transparent 1.8px),radial-gradient(circle at 82% 18%,#a58bff 0 1px,transparent 2px),radial-gradient(circle at 76% 73%,#5feaff 0 1px,transparent 2px),radial-gradient(circle at 21% 78%,#a58bff 0 1px,transparent 2px),radial-gradient(circle at 64% 34%,#fff 0 1px,transparent 2px);background-size:230px 220px,290px 250px,260px 210px,310px 280px,190px 270px;animation:brand-star-drift 9s linear infinite}
-.brand-intro__stage{position:relative;width:min(82vw,370px);height:clamp(230px,52vw,300px);margin:0 auto 0;isolation:isolate;perspective:800px}
-.brand-intro__q-build{position:absolute;left:50%;top:48%;width:min(100%,360px);height:auto;overflow:visible;transform:translate(-50%,-50%);z-index:1}
-.brand-intro__q-trace{stroke-dasharray:630;stroke-dashoffset:630;animation:brand-draw-q 2.2s cubic-bezier(.45,0,.2,1) .35s forwards,brand-q-pulse 2.8s ease-in-out 2.6s infinite;transform-origin:166px 137px}
-.brand-intro__q-tail{stroke-dasharray:190;stroke-dashoffset:190;animation:brand-draw-tail .75s ease-out 2.25s forwards}
-.brand-intro__q-check{stroke-dasharray:170;stroke-dashoffset:170;animation:brand-draw-check .7s ease-out 2.55s forwards}
-.brand-intro__energy-ring{position:absolute;left:50%;top:47%;width:210px;height:210px;border:1px solid #43dfff40;border-radius:50%;transform:translate(-50%,-50%) scale(.55);opacity:0;z-index:0}
-.brand-intro__energy-ring--one{animation:brand-energy-pulse 2.4s ease-out .8s infinite}
-.brand-intro__energy-ring--two{animation:brand-energy-pulse 2.4s ease-out 1.65s infinite}
-.brand-intro__robot{position:absolute;z-index:3;right:2%;top:0;width:clamp(82px,22vw,125px);filter:drop-shadow(0 0 18px #3bbdff70);opacity:0;animation:brand-robot-fly 3.6s cubic-bezier(.18,.8,.22,1) .5s forwards,brand-robot-hover 3.4s ease-in-out 4s infinite;transform-origin:60% 80%}
-.brand-intro__terminal{position:absolute;z-index:4;left:0;bottom:5px;width:min(76%,285px);padding:0 0 12px;border:1px solid #4e8fff9c;border-radius:13px;background:linear-gradient(145deg,#0b1b3df2,#060b20f5);box-shadow:0 10px 45px #0008,0 0 24px #3b8dff3a;overflow:hidden;opacity:0;transform:translate(-55px,38px) scale(.58) rotate(-9deg);animation:brand-terminal-approach 1.5s cubic-bezier(.16,.8,.22,1) 2.65s forwards}
-.brand-intro__terminal-top{display:flex;align-items:center;gap:5px;padding:10px 10px 9px;border-bottom:1px solid #23365d;background:#101c38;color:#90a8d8;font:8px 'DM Mono',monospace;white-space:nowrap}
-.brand-intro__terminal-top i{width:6px;height:6px;border-radius:50%;background:#ff6f7c}.brand-intro__terminal-top i:nth-child(2){background:#ffd16d}.brand-intro__terminal-top i:nth-child(3){background:#5af0b2}.brand-intro__terminal-top span{margin-left:5px}
-.brand-intro__terminal-line{padding:12px 11px 0;color:#9cb6e7;font:clamp(7px,1.8vw,9px) 'DM Mono',monospace;white-space:nowrap}
-.brand-intro__terminal-line b{color:#35edff;margin-right:5px}.brand-intro__terminal-line--two{opacity:0;animation:brand-terminal-type .6s ease 3.8s forwards}.brand-intro__terminal-line--two span{color:#68ffb4;margin-left:6px}
-.brand-intro__terminal-cursor{width:6px;height:10px;background:#39eaff;margin:9px 0 0 20px;animation:brand-cursor-blink .7s steps(2,start) infinite}
-.brand-intro__spark{position:absolute;z-index:2;width:5px;height:5px;border-radius:50%;background:#83f7ff;box-shadow:0 0 15px 4px #38dcff80;opacity:0}
-.brand-intro__spark--a{top:30%;left:13%;animation:brand-spark 1.4s ease-in-out 1.5s infinite}.brand-intro__spark--b{top:20%;right:21%;animation:brand-spark 1.3s ease-in-out 2s infinite}.brand-intro__spark--c{bottom:20%;right:19%;animation:brand-spark 1.7s ease-in-out 2.4s infinite}
-.brand-intro__wordmark{margin-top:1px;font-size:clamp(28px,6vw,42px);animation:brand-wordmark-arrive .9s cubic-bezier(.2,.8,.2,1) 2.4s both}
-.brand-intro__tagline{margin-top:10px;animation:brand-rise .65s ease 2.8s both}
-.brand-intro__creator{margin-top:18px;min-height:43px}
-.brand-intro__progress{margin-top:16px;width:190px}
-.brand-intro__progress i{animation-duration:6s}
-.brand-intro--creator .brand-intro__stage{transform:scale(.92);transition:transform .5s ease}
-@keyframes brand-scene-arrive{from{opacity:0;transform:translateY(18px) scale(.94);filter:blur(8px)}to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
-@keyframes brand-draw-q{to{stroke-dashoffset:0}}
-@keyframes brand-draw-tail{to{stroke-dashoffset:0}}
-@keyframes brand-draw-check{to{stroke-dashoffset:0}}
-@keyframes brand-q-pulse{0%,100%{filter:drop-shadow(0 0 5px #2ceaff70)}50%{filter:drop-shadow(0 0 15px #a46cffb0)}}
-@keyframes brand-energy-pulse{0%{opacity:0;transform:translate(-50%,-50%) scale(.55)}25%{opacity:.8}100%{opacity:0;transform:translate(-50%,-50%) scale(1.65)}}
-@keyframes brand-robot-fly{0%{opacity:0;transform:translate(80px,-35px) rotate(18deg) scale(.55)}55%{opacity:1;transform:translate(-8px,10px) rotate(-7deg) scale(1.06)}78%{transform:translate(2px,-5px) rotate(4deg) scale(.98)}100%{opacity:1;transform:translate(0,0) rotate(0) scale(1)}}
-@keyframes brand-robot-hover{0%,100%{margin-top:0}50%{margin-top:-9px}}
-@keyframes brand-terminal-approach{0%{opacity:0;transform:translate(-55px,38px) scale(.58) rotate(-9deg)}68%{opacity:1;transform:translate(7px,-5px) scale(1.06) rotate(2deg)}100%{opacity:1;transform:translate(0,0) scale(1) rotate(0)}}
-@keyframes brand-terminal-type{from{opacity:0;transform:translateX(-8px)}to{opacity:1;transform:translateX(0)}}
-@keyframes brand-cursor-blink{to{opacity:0}}
-@keyframes brand-spark{0%,100%{opacity:0;transform:scale(.3)}50%{opacity:1;transform:scale(1.4)}}
-@keyframes brand-wordmark-arrive{from{opacity:0;transform:translateY(13px);letter-spacing:.3em}to{opacity:1;transform:translateY(0);letter-spacing:.13em}}
-@keyframes brand-star-drift{to{background-position:90px 80px,-80px 100px,70px -80px,-60px -90px,40px 100px}}
-@media(max-width:420px){.brand-intro__stage{width:88vw;height:235px}.brand-intro__terminal{width:77%}.brand-intro__terminal-top{padding:8px}.brand-intro__terminal-line{padding-top:10px}.brand-intro__robot{right:-1%}}
-@media(prefers-reduced-motion:reduce){.brand-intro__q-trace,.brand-intro__q-tail,.brand-intro__q-check,.brand-intro__robot,.brand-intro__terminal,.brand-intro__wordmark,.brand-intro__tagline,.brand-intro__energy-ring,.brand-intro__spark,.brand-intro__terminal-line--two{animation-duration:.01ms!important;animation-delay:0ms!important;animation-iteration-count:1!important;stroke-dashoffset:0!important;opacity:1!important;transform:none!important}}
+/* QA Nexus loader — original clean composition with smoother motion */
+.brand-intro{animation:brand-intro-out .65s cubic-bezier(.65,0,.35,1) 3.15s both;background:radial-gradient(ellipse at 50% 44%,#11295b 0%,#080f2b 42%,#030611 100%)}
+.brand-intro:before,.brand-intro:after{content:"";position:absolute;width:min(78vw,680px);aspect-ratio:1;border:1px solid #30dfff20;border-radius:50%;animation:brand-orbit 18s linear infinite;will-change:transform}
+.brand-intro:after{width:min(58vw,500px);border-color:#a66bff25;animation-direction:reverse;animation-duration:26s}
+.brand-intro__content{position:relative;z-index:1;display:flex;align-items:center;flex-direction:column;text-align:center;padding:24px;animation:brand-rise 1.05s cubic-bezier(.22,1,.36,1) both;will-change:transform,opacity}
+.brand-intro__logo{width:clamp(150px,30vw,245px);height:auto;filter:drop-shadow(0 0 28px #278aff55);animation:brand-logo-in 1.65s cubic-bezier(.22,1,.36,1) both;will-change:transform,opacity,filter}
+.brand-intro__wordmark{margin-top:14px;font:800 clamp(29px,6vw,43px)/1 'Space Grotesk',sans-serif;letter-spacing:.13em;color:#f4f8ff;text-shadow:0 0 24px #398cff4d;animation:brand-wordmark-soft .8s cubic-bezier(.22,1,.36,1) .45s both}
+.brand-intro__wordmark span{background:linear-gradient(90deg,#4af3ff,#6c8dff 52%,#d18aff);background-clip:text;-webkit-background-clip:text;color:transparent}
+.brand-intro__tagline{margin-top:13px;color:#8fa9d9;font:500 9px/1.6 'DM Mono',monospace;letter-spacing:.18em;animation:brand-rise .7s cubic-bezier(.22,1,.36,1) .7s both}
+.brand-intro__creator{display:flex;flex-direction:column;gap:8px;margin-top:27px;opacity:0;transform:translateY(8px);min-height:43px;transition:opacity .55s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1)}
+.brand-intro__creator span{color:#7f9bc9;font:500 9px 'DM Mono',monospace;letter-spacing:.2em}
+.brand-intro__creator strong{color:#f4f7ff;font:600 clamp(14px,3vw,18px) 'Space Grotesk',sans-serif;letter-spacing:.02em}
+.brand-intro--creator .brand-intro__creator{opacity:1;transform:translateY(0)}
+.brand-intro__progress{height:3px;width:160px;margin-top:26px;border-radius:9px;overflow:hidden;background:#203258}
+.brand-intro__progress i{display:block;height:100%;width:0;border-radius:9px;background:linear-gradient(90deg,#2ceaff,#7e7bff,#c96cff);animation:brand-progress 3.45s cubic-bezier(.45,0,.2,1) forwards}
+@keyframes brand-logo-in{0%{opacity:0;transform:translateY(18px) scale(.84);filter:blur(5px)}65%{opacity:1;filter:blur(0)}82%{transform:translateY(-3px) scale(1.015)}100%{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
+@keyframes brand-rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes brand-wordmark-soft{from{opacity:0;transform:translateY(7px);letter-spacing:.19em}to{opacity:1;transform:translateY(0);letter-spacing:.13em}}
+@keyframes brand-progress{0%{width:0}100%{width:100%}}
+@keyframes brand-orbit{to{transform:rotate(360deg)}}
+@keyframes brand-intro-out{0%{opacity:1;visibility:visible}100%{opacity:0;visibility:hidden;pointer-events:none}}
+@media(prefers-reduced-motion:reduce){.brand-intro,.brand-intro__content,.brand-intro__logo,.brand-intro__wordmark,.brand-intro__tagline,.brand-intro__progress i,.brand-intro:before,.brand-intro:after{animation-duration:.01ms!important;animation-iteration-count:1!important}.brand-intro__creator{transition:none}}
