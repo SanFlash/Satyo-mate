@@ -298,6 +298,9 @@ src/
     └── generator.ts
 docs/
 ├── qa-nexus-banner.svg
+├── qa-nexus-nebula-engine.svg
+├── qa-nexus-3d-lab.svg
+├── qa-nexus-motion-orbit.svg
 └── qa-nexus-feature-map.svg
 public/
 └── qa-nexus-logo.svg

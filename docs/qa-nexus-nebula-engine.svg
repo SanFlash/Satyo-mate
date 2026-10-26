@@ -105,6 +105,59 @@
  <path d="M75 605L260 605" stroke="#8F80FF" stroke-width="2" stroke-linecap="round"><animate attributeName="x1" values="75;930;75" dur="6s" repeatCount="indefinite"/><animate attributeName="x2" values="260;1125;260" dur="6s" repeatCount="indefinite"/></path>
  <path d="M75 615L1125 615" stroke="#58DDF6" stroke-opacity=".12"/>
  <path d="M75 615L260 615" stroke="#58DDF6" stroke-width="1.5" stroke-linecap="round"><animate attributeName="x1" values="900;75;900" dur="7s" repeatCount="indefinite"/><animate attributeName="x2" values="1085;260;1085" dur="7s" repeatCount="indefinite"/></path>
+ <!-- kinetic overlay: multi-speed energy ribbons and traveling signal packets -->
+ <g fill="none" stroke-linecap="round">
+  <path d="M120 220 C300 100 425 170 520 270 S760 520 1080 310" stroke="#65E9FF" stroke-opacity=".18" stroke-width="12" filter="url(#glow)"/>
+  <path d="M120 220 C300 100 425 170 520 270 S760 520 1080 310" stroke="#9AF4FF" stroke-width="2.2" stroke-dasharray="2 24" opacity=".95">
+   <animate attributeName="stroke-dashoffset" values="0;-260" dur="2.4s" repeatCount="indefinite"/>
+  </path>
+  <path d="M100 460 C300 620 450 560 605 455 S850 260 1100 450" stroke="#A48BFF" stroke-opacity=".16" stroke-width="11" filter="url(#glow)"/>
+  <path d="M100 460 C300 620 450 560 605 455 S850 260 1100 450" stroke="#B8A8FF" stroke-width="2" stroke-dasharray="3 20">
+   <animate attributeName="stroke-dashoffset" values="0;230" dur="3s" repeatCount="indefinite"/>
+  </path>
+ </g>
+ <g filter="url(#glow)">
+  <circle r="4.5" fill="#E4FFFF"><animateMotion dur="4.8s" repeatCount="indefinite" path="M120 220 C300 100 425 170 520 270 S760 520 1080 310"/></circle>
+  <circle r="3.5" fill="#A99AFF"><animateMotion dur="5.6s" repeatCount="indefinite" path="M100 460 C300 620 450 560 605 455 S850 260 1100 450"/></circle>
+  <circle r="2.8" fill="#70F7C8"><animateMotion dur="3.7s" repeatCount="indefinite" path="M1080 310 C760 520 520 270 425 170 S300 100 120 220"/></circle>
+ </g>
+ <!-- holographic scan plane -->
+ <g opacity=".62">
+  <path d="M235 250H965" stroke="#8D9EFF" stroke-opacity=".3" stroke-dasharray="2 8"/>
+  <path d="M235 250H450" stroke="#6AEAFF" stroke-width="2.5" filter="url(#glow)">
+   <animate attributeName="x1" values="235;750;235" dur="5.2s" repeatCount="indefinite"/>
+   <animate attributeName="x2" values="450;965;450" dur="5.2s" repeatCount="indefinite"/>
+  </path>
+  <path d="M270 500H930" stroke="#A994FF" stroke-opacity=".22" stroke-dasharray="2 8"/>
+  <path d="M270 500H470" stroke="#A994FF" stroke-width="2" filter="url(#glow)">
+   <animate attributeName="x1" values="760;270;760" dur="6.4s" repeatCount="indefinite"/>
+   <animate attributeName="x2" values="960;470;960" dur="6.4s" repeatCount="indefinite"/>
+  </path>
+ </g>
+ <!-- orbiting micro nodes -->
+ <g>
+  <circle cx="604" cy="393" r="170" stroke="#7A8EFF" stroke-opacity=".14" stroke-dasharray="1 12">
+   <animateTransform attributeName="transform" type="rotate" from="0 604 393" to="360 604 393" dur="32s" repeatCount="indefinite"/>
+  </circle>
+  <g>
+   <animateTransform attributeName="transform" type="rotate" from="0 604 393" to="360 604 393" dur="13s" repeatCount="indefinite"/>
+   <circle cx="604" cy="223" r="5" fill="#A6F8FF" filter="url(#glow)"/>
+   <circle cx="604" cy="223" r="11" stroke="#A6F8FF" stroke-opacity=".45"><animate attributeName="r" values="8;15;8" dur="2.1s" repeatCount="indefinite"/></circle>
+  </g>
+  <g>
+   <animateTransform attributeName="transform" type="rotate" from="0 604 393" to="-360 604 393" dur="19s" repeatCount="indefinite"/>
+   <circle cx="604" cy="251" r="3.5" fill="#9BFFDA" filter="url(#glow)"/>
+  </g>
+ </g>
+ <!-- corner telemetry -->
+ <g font-family="Inter,Segoe UI,Arial,sans-serif" font-size="9" letter-spacing="1.4" fill="#A9B7E6" opacity=".8">
+  <text x="55" y="648">SIGNAL / LIVE</text>
+  <text x="1145" y="648" text-anchor="end">ENGINE / ONLINE</text>
+  <path d="M55 658H190M1010 658H1145" stroke="#7F8DCD" stroke-opacity=".5"/>
+  <path d="M55 658H95M1100 658H1145" stroke="#71E9FF" stroke-width="2">
+   <animate attributeName="stroke-dasharray" values="0 100;40 60;0 100" dur="2.6s" repeatCount="indefinite"/>
+  </path>
+ </g>
  <!-- ambient particles -->
  <g fill="#B2A4FF"><circle cx="393" cy="243" r="3"><animate attributeName="opacity" values=".15;1;.15" dur="2s" repeatCount="indefinite"/></circle><circle cx="769" cy="277" r="2.5"><animate attributeName="opacity" values="1;.15;1" dur="2.8s" repeatCount="indefinite"/></circle><circle cx="761" cy="493" r="3"><animate attributeName="opacity" values=".2;1;.2" dur="2.5s" repeatCount="indefinite"/></circle><circle cx="391" cy="492" r="2.5"><animate attributeName="opacity" values="1;.2;1" dur="3s" repeatCount="indefinite"/></circle></g>
  <g fill="#74EEFF"><circle cx="275" cy="185" r="2"><animate attributeName="opacity" values="1;.2;1" dur="2.3s" repeatCount="indefinite"/></circle><circle cx="1000" cy="184" r="2.5"><animate attributeName="opacity" values=".2;1;.2" dur="3.1s" repeatCount="indefinite"/></circle></g>
