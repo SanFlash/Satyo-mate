@@ -1,22 +1,30 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
+
+const INTRO_SESSION_KEY = 'qa-nexus-intro-shown-v1';
 
 export default function BrandIntro({ children }: { children: React.ReactNode }) {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
   const [showCreator, setShowCreator] = useState(false);
-  const pathname = usePathname();
-  const router = useRouter();
 
   useEffect(() => {
-    const creatorTimer = window.setTimeout(() => setShowCreator(true), 1750);
-    const finishTimer = window.setTimeout(() => {
-      setVisible(false);
-      if (pathname !== '/') router.replace('/');
-    }, 3450);
-    return () => { window.clearTimeout(creatorTimer); window.clearTimeout(finishTimer); };
-  }, [pathname, router]);
+    // Show the branded intro once per browser tab session, never on route changes.
+    try {
+      if (window.sessionStorage.getItem(INTRO_SESSION_KEY) === '1') return;
+      window.sessionStorage.setItem(INTRO_SESSION_KEY, '1');
+    } catch {
+      // Storage may be disabled; still allow the intro for this mount.
+    }
+
+    setVisible(true);
+    const creatorTimer = window.setTimeout(() => setShowCreator(true), 900);
+    const finishTimer = window.setTimeout(() => setVisible(false), 1750);
+    return () => {
+      window.clearTimeout(creatorTimer);
+      window.clearTimeout(finishTimer);
+    };
+  }, []);
 
   return <>
     {children}
