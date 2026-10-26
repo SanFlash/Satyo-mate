@@ -1,6 +1,6 @@
-# AutoLearn QA — Interactive Automation Engineering Lab
+# QA Nexus — Learn · Practice · Build · Automate
 
-AutoLearn QA is a responsive learning workspace for web UI and end-to-end automation. It combines a structured curriculum, interactive local demo components, and starter project generation for Selenium and Playwright using Python, JavaScript, and TypeScript.
+QA Nexus, created by **Satyendra Kumar Namdeo**, is a responsive learning workspace for web UI and end-to-end automation. It combines a structured curriculum, interactive local demo components, and starter project generation for Selenium and Playwright using Python, JavaScript, and TypeScript.
 
 ## Current starter features
 
@@ -23,6 +23,13 @@ AutoLearn QA is a responsive learning workspace for web UI and end-to-end automa
 - Vercel-compatible Next.js app structure
 
 > Generated templates are starter examples, not yet execution-verified. Their selectors and URLs must match a real local demo application before use. This interface does not run browser scripts.
+
+## Brand & creator
+
+- Product name: QA Nexus
+- Tagline: Learn · Practice · Build · Automate
+- Creator: Satyendra Kumar Namdeo
+- Logo and animated branded intro are included in the application.
 
 ## Stack
 

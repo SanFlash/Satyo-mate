@@ -253,3 +253,26 @@ html{scroll-behavior:smooth;scroll-padding-top:78px}
 .stat-label .help-tip-trigger svg{width:10px;height:10px}
 .generator-form label .help-tip{margin-left:2px}
 @media(max-width:600px){.help-tip-content{position:fixed;left:18px;right:18px;bottom:auto;top:30%;transform:translateY(4px);width:auto;max-width:none}.help-tip-content:after{display:none}.help-tip:hover .help-tip-content,.help-tip:focus-within .help-tip-content,.help-tip.is-open .help-tip-content{transform:translateY(0)}}
+
+
+/* QA Nexus animated brand intro */
+.brand-intro{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;overflow:hidden;background:radial-gradient(ellipse at 50% 44%,#11295b 0%,#080f2b 42%,#030611 100%);animation:brand-intro-out .45s ease 3s both}
+.brand-intro:before,.brand-intro:after{content:"";position:absolute;width:min(78vw,680px);aspect-ratio:1;border:1px solid #30dfff20;border-radius:50%;animation:brand-orbit 8s linear infinite}
+.brand-intro:after{width:min(58vw,500px);border-color:#a66bff25;animation-direction:reverse;animation-duration:12s}
+.brand-intro__content{position:relative;z-index:1;display:flex;align-items:center;flex-direction:column;text-align:center;padding:24px;animation:brand-rise .8s cubic-bezier(.2,.8,.2,1) both}
+.brand-intro__logo{width:clamp(150px,30vw,245px);height:auto;filter:drop-shadow(0 0 28px #278aff55);animation:brand-logo-in 1.35s cubic-bezier(.2,.8,.2,1) both}
+.brand-intro__wordmark{margin-top:14px;font:800 clamp(29px,6vw,43px)/1 'Space Grotesk',sans-serif;letter-spacing:.13em;color:#f4f8ff;text-shadow:0 0 24px #398cff4d}
+.brand-intro__wordmark span{background:linear-gradient(90deg,#4af3ff,#6c8dff 52%,#d18aff);background-clip:text;-webkit-background-clip:text;color:transparent}
+.brand-intro__tagline{margin-top:13px;color:#8fa9d9;font:500 9px/1.6 'DM Mono',monospace;letter-spacing:.18em}
+.brand-intro__creator{display:flex;flex-direction:column;gap:8px;margin-top:27px;opacity:0;transform:translateY(10px);min-height:43px;transition:opacity .45s ease,transform .45s ease}
+.brand-intro__creator span{color:#7f9bc9;font:500 9px 'DM Mono',monospace;letter-spacing:.2em}
+.brand-intro__creator strong{color:#f4f7ff;font:600 clamp(14px,3vw,18px) 'Space Grotesk',sans-serif;letter-spacing:.02em}
+.brand-intro--creator .brand-intro__creator{opacity:1;transform:translateY(0)}
+.brand-intro__progress{height:3px;width:160px;margin-top:26px;border-radius:9px;overflow:hidden;background:#203258}
+.brand-intro__progress i{display:block;height:100%;width:0;border-radius:9px;background:linear-gradient(90deg,#2ceaff,#7e7bff,#c96cff);animation:brand-progress 3.25s linear forwards}
+@keyframes brand-logo-in{0%{opacity:0;transform:translateY(22px) scale(.76) rotate(-8deg);filter:blur(8px)}65%{opacity:1;filter:blur(0)}100%{transform:translateY(0) scale(1) rotate(0)}}
+@keyframes brand-rise{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+@keyframes brand-progress{to{width:100%}}
+@keyframes brand-orbit{to{transform:rotate(360deg)}}
+@keyframes brand-intro-out{0%,88%{opacity:1;visibility:visible}100%{opacity:0;visibility:hidden;pointer-events:none}}
+@media(prefers-reduced-motion:reduce){.brand-intro,.brand-intro__content,.brand-intro__logo,.brand-intro__progress i,.brand-intro:before,.brand-intro:after{animation-duration:.01ms!important;animation-iteration-count:1!important}.brand-intro__creator{transition:none}}

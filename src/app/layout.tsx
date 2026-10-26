@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import BrandIntro from '@/components/brand-intro';
 
 export const metadata: Metadata = {
-  title: 'AutoLearn QA | Automation Engineering Lab',
-  description: 'Learn Playwright and Selenium with interactive demos, a composable Page Object Model builder, and a test design studio for coverage planning and automation scaffolds.',
+  title: 'QA Nexus | Learn · Practice · Build · Automate',
+  description: 'QA Nexus by Satyendra Kumar Namdeo — learn, practice, build, and automate with interactive Playwright and Selenium lessons, test design, and Page Object Model tools.',
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body>{children}</body></html>;
+  return <html lang="en"><body><BrandIntro>{children}</BrandIntro></body></html>;
 }
