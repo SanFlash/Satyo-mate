@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" fill="none" role="img" aria-labelledby="title desc">
+<title id="title">QA Nexus — kinetic quality engineering showcase</title>
+<desc id="desc">A cinematic dark interface with a three-dimensional floating automation core, isometric glass panels, moving neon light trails, orbiting workflow nodes, animated scan lines, and glowing particles.</desc>
+<defs>
+ <linearGradient id="bg" x1="40" y1="0" x2="1160" y2="760" gradientUnits="userSpaceOnUse"><stop stop-color="#060916"/><stop offset=".46" stop-color="#101735"/><stop offset="1" stop-color="#21113E"/></linearGradient>
+ <linearGradient id="violet" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#D1C8FF"/><stop offset=".48" stop-color="#8877FF"/><stop offset="1" stop-color="#4939C4"/></linearGradient>
+ <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#B1FBFF"/><stop offset=".45" stop-color="#54DFF5"/><stop offset="1" stop-color="#1978C4"/></linearGradient>
+ <linearGradient id="mint" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#9DFFDA"/><stop offset="1" stop-color="#13A981"/></linearGradient>
+ <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#22335B" stop-opacity=".96"/><stop offset="1" stop-color="#11162F" stop-opacity=".96"/></linearGradient>
+ <radialGradient id="ambient"><stop stop-color="#6F5AFF" stop-opacity=".42"/><stop offset="1" stop-color="#6F5AFF" stop-opacity="0"/></radialGradient>
+ <pattern id="grid" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" stroke="#8FA4FF" stroke-opacity=".085"/></pattern>
+ <filter id="glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+ <filter id="shadow" x="-60%" y="-60%" width="220%" height="240%"><feGaussianBlur stdDeviation="18"/></filter>
+ <clipPath id="clip"><rect width="1200" height="760" rx="26"/></clipPath>
+</defs>
+<g clip-path="url(#clip)">
+ <rect width="1200" height="760" fill="url(#bg)"/><rect width="1200" height="760" fill="url(#grid)"/>
+ <circle cx="602" cy="365" r="410" fill="url(#ambient)"><animate attributeName="r" values="350;440;350" dur="9s" repeatCount="indefinite"/></circle>
+ <!-- ambient sweep -->
+ <path d="M-120 555L650 -80" stroke="#8D7BFF" stroke-opacity=".12" stroke-width="90"><animate attributeName="stroke-opacity" values=".03;.16;.03" dur="8s" repeatCount="indefinite"/></path>
+ <g font-family="Inter,Segoe UI,Arial,sans-serif">
+  <text x="58" y="58" font-size="12" font-weight="700" letter-spacing="4" fill="#B5A8FF">QA NEXUS <tspan fill="#596B9A">/</tspan> QUALITY ENGINEERING SYSTEM</text>
+  <text x="58" y="116" font-size="39" font-weight="750" letter-spacing="-1.4" fill="#F7F8FF">Think in tests.</text>
+  <text x="58" y="163" font-size="39" font-weight="750" letter-spacing="-1.4" fill="#A99BFF">Build with confidence.</text>
+  <text x="60" y="197" font-size="14" fill="#A8B5D8">A hands-on workspace for learning, test design, and automation scaffolds.</text>
+  <g transform="translate(60 225)">
+   <rect width="176" height="36" rx="18" fill="#8270FF" fill-opacity=".15" stroke="#A597FF" stroke-opacity=".65"/>
+   <circle cx="18" cy="18" r="4" fill="#8B7BFF"><animate attributeName="opacity" values="1;.35;1" dur="2s" repeatCount="indefinite"/></circle>
+   <text x="31" y="22" font-size="10" font-weight="700" letter-spacing="1" fill="#E3DEFF">LEARN · DESIGN · BUILD</text>
+  </g>
+ </g>
+ <!-- isometric foundation -->
+ <ellipse cx="635" cy="560" rx="360" ry="82" fill="#02040D" opacity=".7" filter="url(#shadow)"/>
+ <path d="M235 432L625 205L1017 432L626 658Z" fill="#0B1430" stroke="#6476D0" stroke-opacity=".7"/>
+ <path d="M235 432L626 658V686L235 459Z" fill="#121B3D" stroke="#344A8A"/>
+ <path d="M626 658L1017 432V459L626 686Z" fill="#18153B" stroke="#51449C"/>
+ <path d="M292 432L626 238L960 432L626 626Z" fill="url(#glass)" stroke="#5469BB" stroke-opacity=".65"/>
+ <path d="M292 432L626 626L960 432" stroke="#8494FF" stroke-opacity=".28"/>
+ <!-- moving floor scan -->
+ <path d="M330 432L626 603L923 432" stroke="#69E6FF" stroke-width="2" stroke-opacity=".5" stroke-dasharray="70 520"><animate attributeName="stroke-dashoffset" from="0" to="-590" dur="5s" repeatCount="indefinite"/></path>
+ <!-- orbital paths -->
+ <ellipse cx="626" cy="405" rx="305" ry="106" stroke="#8C7BFF" stroke-width="1.5" stroke-opacity=".75" stroke-dasharray="7 9" transform="rotate(-22 626 405)"/>
+ <ellipse cx="626" cy="405" rx="260" ry="81" stroke="#58DDF6" stroke-width="1.2" stroke-opacity=".55" transform="rotate(24 626 405)"/>
+ <ellipse cx="626" cy="405" rx="305" ry="106" stroke="#C0B5FF" stroke-width="3" stroke-linecap="round" stroke-dasharray="52 750" transform="rotate(-22 626 405)"><animate attributeName="stroke-dashoffset" from="0" to="-802" dur="6s" repeatCount="indefinite"/></ellipse>
+ <circle r="5.5" fill="#A8F7FF" filter="url(#glow)"><animateMotion dur="6s" repeatCount="indefinite" path="M334 515 C407 266 811 246 918 365 C1003 472 591 591 334 515"/></circle>
+ <circle r="4" fill="#9DFFDA" filter="url(#glow)"><animateMotion dur="7.5s" repeatCount="indefinite" path="M918 365 C811 246 407 266 334 515 C591 591 1003 472 918 365"/></circle>
+ <!-- core shadow and animated cube -->
+ <ellipse cx="628" cy="481" rx="126" ry="38" fill="#7462FF" opacity=".3" filter="url(#shadow)"/>
+ <g>
+  <animateTransform attributeName="transform" type="translate" values="0 0;0 -12;0 0" dur="4.3s" repeatCount="indefinite"/>
+  <path d="M520 349L626 288L732 349L626 411Z" fill="url(#violet)" stroke="#D6CEFF" stroke-width="1.5"/>
+  <path d="M520 349L626 411V535L520 473Z" fill="#5D4ED7" stroke="#A99AFF" stroke-width="1.5"/>
+  <path d="M626 411L732 349V473L626 535Z" fill="url(#cyan)" stroke="#9DF4FF" stroke-width="1.5"/>
+  <path d="M546 350L626 304L706 350L626 396Z" stroke="#F2EFFF" stroke-opacity=".7"/>
+  <path d="M545 374L626 421L707 374" stroke="#F4F1FF" stroke-opacity=".4"/>
+  <g transform="translate(574 418)" stroke="#FFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M0 0L-13 13L0 26"/><path d="M104 0L117 13L104 26"/><path d="M71 -4L39 31"/></g>
+  <circle cx="626" cy="289" r="5" fill="#FFF" filter="url(#glow)"/>
+ </g>
+ <!-- floating UI cards left -->
+ <g>
+  <animateTransform attributeName="transform" type="translate" values="0 0;0 -9;0 0" dur="5.1s" repeatCount="indefinite"/>
+  <path d="M98 345L211 280L321 344L208 410Z" fill="#080E22" opacity=".5"/>
+  <path d="M98 323L208 259L318 323L208 387Z" fill="#121E40" stroke="#7E78EF" stroke-width="1.2"/>
+  <path d="M98 323L208 387V405L98 341Z" fill="#1A244B" stroke="#4B5EAA"/>
+  <path d="M208 387L318 323V341L208 405Z" fill="#211D4D" stroke="#6556B8"/>
+  <circle cx="208" cy="321" r="24" fill="#8D7BFF" fill-opacity=".15" stroke="#A79BFF"/>
+  <path d="M195 317L204 326L222 308" stroke="#D9D2FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="208" y="360" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="11" font-weight="700" fill="#EAE7FF" text-anchor="middle">TEST DESIGN</text>
+ </g>
+ <!-- floating UI cards right -->
+ <g>
+  <animateTransform attributeName="transform" type="translate" values="0 0;0 8;0 0" dur="5.7s" repeatCount="indefinite"/>
+  <path d="M887 345L1000 280L1110 344L997 410Z" fill="#080E22" opacity=".5"/>
+  <path d="M887 323L997 259L1107 323L997 387Z" fill="#10233D" stroke="#4CD5F1" stroke-width="1.2"/>
+  <path d="M887 323L997 387V405L887 341Z" fill="#132747" stroke="#3A6E9D"/>
+  <path d="M997 387L1107 323V341L997 405Z" fill="#12304A" stroke="#2B8DB2"/>
+  <rect x="978" y="298" width="38" height="34" rx="6" fill="#4DDDF4" fill-opacity=".14" stroke="#7EEFFF"/>
+  <path d="M987 307H1007M987 314H1007M987 321H1000" stroke="#B7F7FF" stroke-width="2.2" stroke-linecap="round"/>
+  <text x="997" y="360" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="11" font-weight="700" fill="#E1FAFF" text-anchor="middle">FRAMEWORK</text>
+ </g>
+ <!-- floating status panel -->
+ <g transform="translate(835 144)">
+  <rect width="282" height="68" rx="13" fill="#0B122A" stroke="#5368A9"/>
+  <rect x="1" y="1" width="280" height="66" rx="12" stroke="#A89BFF" stroke-opacity=".14"/>
+  <circle cx="23" cy="24" r="5" fill="#65F0B9"><animate attributeName="r" values="4;6;4" dur="2.4s" repeatCount="indefinite"/></circle>
+  <text x="39" y="27" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="12" font-weight="700" fill="#F3F5FF">QUALITY WORKFLOW</text>
+  <text x="22" y="48" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="10" fill="#A8B8DE">Concept → Test → Scaffold → Validate</text>
+  <path d="M249 19L256 26L269 12" stroke="#72F6C5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+ </g>
+ <!-- scanning UI accents -->
+ <g opacity=".85">
+  <path d="M68 300V284H84M68 300H84M1116 438H1132V454M1132 438V454" stroke="#8E7EFF" stroke-width="1.5"/>
+  <path d="M435 249H520" stroke="#65E8FF" stroke-width="2" stroke-linecap="round" stroke-dasharray="1 10"><animate attributeName="stroke-dashoffset" from="0" to="-40" dur="1.2s" repeatCount="indefinite"/></path>
+  <path d="M735 563H823" stroke="#9E8DFF" stroke-width="2" stroke-linecap="round" stroke-dasharray="1 10"><animate attributeName="stroke-dashoffset" from="0" to="-40" dur="1.2s" repeatCount="indefinite"/></path>
+ </g>
+ <!-- light particles -->
+ <g fill="#B5A7FF">
+  <circle cx="410" cy="290" r="3"><animate attributeName="opacity" values=".2;1;.2" dur="2.2s" repeatCount="indefinite"/></circle>
+  <circle cx="787" cy="274" r="2.5"><animate attributeName="opacity" values="1;.2;1" dur="2.8s" repeatCount="indefinite"/></circle>
+  <circle cx="757" cy="541" r="3"><animate attributeName="opacity" values=".2;1;.2" dur="3s" repeatCount="indefinite"/></circle>
+  <circle cx="383" cy="477" r="2.5"><animate attributeName="opacity" values="1;.2;1" dur="2.5s" repeatCount="indefinite"/></circle>
+ </g>
+ <g font-family="Inter,Segoe UI,Arial,sans-serif" text-anchor="middle">
+  <text x="600" y="714" fill="#B3BFE2" font-size="11" letter-spacing="3.3">LEARN  /  DESIGN  /  GENERATE  /  VALIDATE</text>
+  <text x="600" y="738" fill="#667BAF" font-size="9" letter-spacing="2">ENGINEER QUALITY WITH INTENTION</text>
+ </g>
+</g>
+</svg>

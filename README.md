@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/qa-nexus-banner.svg" alt="QA Nexus animated banner" width="100%" />
+<img src="docs/qa-nexus-kinetic-showcase.svg" alt="QA Nexus cinematic animated showcase with a 3D automation core, moving neon trails, orbiting test nodes, and a glowing quality-engineering grid" width="100%" />
 
 <p>
   <a href="https://github.com/SanFlash/Satyo-mate/actions"><img src="https://img.shields.io/github/actions/workflow/status/SanFlash/Satyo-mate/ci.yml?style=for-the-badge&logo=githubactions&logoColor=white&label=CI" alt="CI status" /></a>
@@ -20,6 +20,25 @@
 <img src="https://capsule-render.vercel.app/api?type=rect&color=0:111A3C,50:3158A6,100:8B5CF6&height=3&section=header" width="100%" alt="" />
 
 </div>
+
+## ✦ The kinetic experience
+
+<div align="center">
+
+<img src="docs/qa-nexus-kinetic-showcase.svg" alt="Kinetic QA Nexus motion graphic with layered isometric geometry, a floating automation core, animated workflow nodes, orbiting light trails, and scanning interface accents" width="100%" />
+
+<table>
+<tr>
+<td align="center" width="25%"><strong>01 / DISCOVER</strong><br/><sub>Understand the concept</sub></td>
+<td align="center" width="25%"><strong>02 / DESIGN</strong><br/><sub>Structure test coverage</sub></td>
+<td align="center" width="25%"><strong>03 / GENERATE</strong><br/><sub>Prepare reusable scaffolds</sub></td>
+<td align="center" width="25%"><strong>04 / VALIDATE</strong><br/><sub>Run and verify in your environment</sub></td>
+</tr>
+</table>
+
+</div>
+
+The motion language is inspired by premium GSAP-style product sites: staggered reveals, orbiting elements, scanning highlights, animated paths, floating 3D-style layers, and pulsing state indicators. For GitHub compatibility, this showcase is authored as animated SVG—GitHub README files do not execute embedded JavaScript or GSAP timelines.
 
 ## ✦ The idea
 
