@@ -29,7 +29,7 @@ const toolSnippets:Record<Tool,Record<Language,string>> = {
 function HelpTip({text}:{text:string}) {
  const id=useId();
  const [open,setOpen]=useState(false);
- return <span className={'help-tip '+(open?'is-open':'')}><button type="button" className="help-tip-trigger" aria-label={`Help: ${text}`} aria-describedby={id} aria-expanded={open} onClick={()=>setOpen(v=>!v)}><CircleHelp size={13}/></button><span id={id} role="tooltip" className="help-tip-content">{text}</span></span>;
+ return <span className={'help-tip '+(open?'is-open':'')}><button type="button" className="help-tip-trigger" title="Click for an explanation" aria-label={`Click for help: ${text}`} aria-describedby={id} aria-expanded={open} onClick={()=>setOpen(v=>!v)}><CircleHelp size={13}/></button><span id={id} role="tooltip" className="help-tip-content">{text}</span></span>;
 }
 
 type PreviewStep = { label: string; code: string };

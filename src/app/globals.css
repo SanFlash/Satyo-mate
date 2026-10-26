@@ -416,3 +416,12 @@ pre,code{overflow-wrap:anywhere;}
 .help-glossary summary{font-size:11px;font-weight:600;cursor:pointer}
 .help-glossary p{font-size:10px;color:var(--muted);line-height:1.55;margin:8px 0 0}
 @media(max-width:600px){.help-toolkit-root{right:12px;bottom:12px;gap:8px}.help-toolkit-launcher{padding:8px 13px 8px 8px;font-size:11px}.help-launcher-icon{width:28px;height:28px}.help-toolkit-panel{width:calc(100vw - 24px);max-height:74vh;border-radius:13px}.help-toolkit-head{padding:15px}.help-toolkit-content{padding:12px}.help-tour-card{padding:9px}.help-toolkit-tabs{padding-left:11px;padding-right:11px}}
+
+/* Tooltip visibility fix: keep help text above cards, panels, and clipped layouts. */
+.help-tip{z-index:150!important}
+.help-tip-content{position:fixed!important;left:50%!important;right:auto!important;top:auto!important;bottom:78px!important;transform:translate(-50%,6px)!important;width:min(360px,calc(100vw - 32px))!important;max-height:min(35vh,220px);overflow:auto;z-index:99999!important;background:var(--panel)!important;color:var(--text)!important;border:1px solid var(--accent)!important;box-shadow:0 18px 55px #000b!important;padding:14px 16px!important;border-radius:12px!important;font-size:12px!important;line-height:1.65!important;pointer-events:none!important}
+.help-tip-content:after{display:none!important}
+.help-tip:hover .help-tip-content,.help-tip:focus-within .help-tip-content,.help-tip.is-open .help-tip-content{opacity:1!important;visibility:visible!important;transform:translate(-50%,0)!important}
+.help-tip-trigger{cursor:pointer!important}
+.help-tip-trigger:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media(max-width:600px){.help-tip-content{left:12px!important;right:12px!important;top:auto!important;bottom:72px!important;transform:translateY(6px)!important;width:auto!important;max-height:30vh}.help-tip:hover .help-tip-content,.help-tip:focus-within .help-tip-content,.help-tip.is-open .help-tip-content{transform:translateY(0)!important}}
