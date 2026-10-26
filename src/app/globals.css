@@ -377,3 +377,42 @@ pre,code{overflow-wrap:anywhere;}
 @media(max-width:980px){.creator-credit{display:none}}
 @media(max-width:650px){.brand small{font-size:6px;letter-spacing:.15px}.studio-brand small{font-size:7px;letter-spacing:0}.framework-credit{font-size:10px}}
 @media(max-width:390px){.brand small{font-size:5px;letter-spacing:0}.framework-credit{display:none}}
+
+/* Guided onboarding toolkit */
+.help-toolkit-root{position:fixed;right:22px;bottom:22px;z-index:120;display:flex;flex-direction:column;align-items:flex-end;gap:12px;font-family:var(--font-body)}
+.help-toolkit-launcher{display:flex;align-items:center;gap:10px;position:relative;overflow:hidden;border:1px solid #a99aff70;border-radius:999px;padding:10px 16px 10px 10px;background:linear-gradient(120deg,#8d7bff,#6550dc);color:#fff;box-shadow:0 12px 34px #05040e66;font-size:12px;font-weight:700;transition:transform .18s,box-shadow .18s}
+.help-toolkit-launcher:hover{transform:translateY(-2px);box-shadow:0 15px 38px #05040e80}
+.help-launcher-icon{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:#ffffff22;border:1px solid #ffffff35}
+.help-launcher-pulse{position:absolute;right:8px;top:7px;width:5px;height:5px;border-radius:50%;background:#8bf0c1;box-shadow:0 0 0 4px #8bf0c122}
+.help-toolkit-panel{width:min(410px,calc(100vw - 28px));max-height:min(78vh,760px);overflow:auto;border:1px solid var(--line);border-radius:16px;background:var(--panel);color:var(--text);box-shadow:0 24px 80px #0008;animation:help-panel-in .2s ease-out}
+@keyframes help-panel-in{from{opacity:0;transform:translateY(10px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+.help-toolkit-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:19px 19px 15px;border-bottom:1px solid var(--line);background:radial-gradient(ellipse at 0 0,#8d7bff1b,transparent 70%)}
+.help-toolkit-kicker{display:flex;align-items:center;gap:6px;color:var(--accent);font:500 9px var(--font-code);letter-spacing:1.1px}
+.help-toolkit-head h2{font:600 21px var(--font-display);letter-spacing:-.5px;margin:9px 0 5px}
+.help-toolkit-head p{font-size:11px;color:var(--muted);line-height:1.5;margin:0;max-width:285px}
+.help-toolkit-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;padding:10px 15px 0}
+.help-toolkit-tabs button{border:1px solid transparent;background:transparent;color:var(--muted);padding:8px 6px;border-radius:7px;font-size:10px}
+.help-toolkit-tabs button:hover{background:var(--panel2);color:var(--text)}
+.help-toolkit-tabs button.active{color:var(--accent);background:#9481ff14;border-color:#9481ff35;font-weight:700}
+.help-toolkit-content{padding:15px;display:flex;flex-direction:column;gap:10px}
+.help-step-count{color:var(--accent);font:500 9px var(--font-code);letter-spacing:1px}
+.help-toolkit-content h3{font:600 16px var(--font-display);margin:0 0 2px}
+.help-tour-progress{height:4px;background:var(--line);border-radius:8px;overflow:hidden}
+.help-tour-progress i{display:block;height:100%;background:linear-gradient(90deg,#7662f2,#b6a9ff);border-radius:8px}
+.help-tour-card{display:flex;align-items:flex-start;gap:11px;padding:10px;border:1px solid var(--line);border-radius:9px;background:var(--panel2)}
+.help-tour-number{flex:0 0 29px;width:29px;height:29px;display:grid;place-items:center;border-radius:8px;background:#9481ff17;color:var(--accent);font:11px var(--font-code)}
+.help-tour-card strong,.help-tool-link strong{display:block;font-size:11px;margin:1px 0 4px}
+.help-tour-card p{font-size:10px;color:var(--muted);line-height:1.55;margin:0}
+.help-toolkit-actions{display:flex;justify-content:space-between;gap:8px;margin-top:3px}
+.help-tool-link{width:100%;display:flex;align-items:center;gap:10px;text-align:left;padding:11px;border:1px solid var(--line);border-radius:9px;background:var(--panel2);color:var(--text)}
+.help-tool-link:hover{border-color:#9481ff70;transform:translateX(1px)}
+.help-tool-link>span:nth-child(2){flex:1;min-width:0}
+.help-tool-link small{display:block;color:var(--muted);font-size:10px;line-height:1.5}
+.help-tool-icon{width:34px;height:34px;flex:0 0 34px;display:grid;place-items:center;border:1px solid #9481ff2c;border-radius:9px;color:var(--accent);background:#9481ff12}
+.help-note{display:flex;align-items:flex-start;gap:9px;padding:11px;border-radius:9px;background:#7bb8ff0c;border:1px solid #7bb8ff28;color:var(--blue)}
+.help-note svg{flex-shrink:0;margin-top:1px}
+.help-note p{font-size:10px;line-height:1.55;color:var(--text2);margin:0}
+.help-glossary{border:1px solid var(--line);border-radius:8px;background:var(--panel2);padding:10px 11px}
+.help-glossary summary{font-size:11px;font-weight:600;cursor:pointer}
+.help-glossary p{font-size:10px;color:var(--muted);line-height:1.55;margin:8px 0 0}
+@media(max-width:600px){.help-toolkit-root{right:12px;bottom:12px;gap:8px}.help-toolkit-launcher{padding:8px 13px 8px 8px;font-size:11px}.help-launcher-icon{width:28px;height:28px}.help-toolkit-panel{width:calc(100vw - 24px);max-height:74vh;border-radius:13px}.help-toolkit-head{padding:15px}.help-toolkit-content{padding:12px}.help-tour-card{padding:9px}.help-toolkit-tabs{padding-left:11px;padding-right:11px}}
