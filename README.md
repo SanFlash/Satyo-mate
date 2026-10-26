@@ -11,7 +11,7 @@
   <img src="https://img.shields.io/badge/TypeScript-Ready-3178c6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
 </p>
 
-### <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&duration=2400&pause=650&color=69E7FF&center=true&vCenter=true&width=760&lines=Learn+QA+Engineering;Design+smarter+test+cases;Build+maintainable+test+frameworks;Explore+Playwright+%26+Selenium;Make+quality+a+habit" alt="Animated typing headline" />
+### <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=22&duration=1800&pause=350&color=69E7FF&center=true&vCenter=true&width=820&lines=QA+is+not+just+testing;Design+smarter+test+cases;Build+maintainable+automation;Explore+Playwright+%26+Selenium;Learn.+Practice.+Automate." alt="Animated typing headline" />
 
 **A hands-on lab for learning, designing, and preparing QA automation.**
 
