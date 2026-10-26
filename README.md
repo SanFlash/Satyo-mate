@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/qa-nexus-kinetic-showcase.svg" alt="QA Nexus cinematic animated showcase with a 3D automation core, moving neon trails, orbiting test nodes, and a glowing quality-engineering grid" width="100%" />
+<img src="docs/qa-nexus-banner.svg" alt="QA Nexus animated banner" width="100%" />
 
 <p>
   <a href="https://github.com/SanFlash/Satyo-mate/actions"><img src="https://img.shields.io/github/actions/workflow/status/SanFlash/Satyo-mate/ci.yml?style=for-the-badge&logo=githubactions&logoColor=white&label=CI" alt="CI status" /></a>
@@ -21,31 +21,26 @@
 
 </div>
 
-## ✦ The kinetic experience
-
-<div align="center">
-
-<img src="docs/qa-nexus-kinetic-showcase.svg" alt="Kinetic QA Nexus motion graphic with layered isometric geometry, a floating automation core, animated workflow nodes, orbiting light trails, and scanning interface accents" width="100%" />
-
-<table>
-<tr>
-<td align="center" width="25%"><strong>01 / DISCOVER</strong><br/><sub>Understand the concept</sub></td>
-<td align="center" width="25%"><strong>02 / DESIGN</strong><br/><sub>Structure test coverage</sub></td>
-<td align="center" width="25%"><strong>03 / GENERATE</strong><br/><sub>Prepare reusable scaffolds</sub></td>
-<td align="center" width="25%"><strong>04 / VALIDATE</strong><br/><sub>Run and verify in your environment</sub></td>
-</tr>
-</table>
-
-</div>
-
-The motion language is inspired by premium GSAP-style product sites: staggered reveals, orbiting elements, scanning highlights, animated paths, floating 3D-style layers, and pulsing state indicators. For GitHub compatibility, this showcase is authored as animated SVG—GitHub README files do not execute embedded JavaScript or GSAP timelines.
-
 ## ✦ The idea
 
 QA Nexus turns QA learning into a practical workflow: **learn a concept → explore an example → design tests → generate a starter framework.**
 
 > [!NOTE]
 > This is a learning and code-generation workspace. The hosted app does **not** execute real Playwright or Selenium browser sessions. Review and run generated code in your own local or CI environment.
+
+## ⚡ Inside the QA Nexus engine
+
+<div align="center">
+
+<img src="docs/qa-nexus-nebula-engine.svg" alt="High-energy animated 3D QA Nexus engine with a central isometric quality cube, orbiting test modules, laser-like light trails, glowing data streams, holographic panels and animated scan effects" width="100%" />
+
+**DISCOVER THE SIGNAL · DESIGN THE TEST · BUILD THE SYSTEM · VERIFY THE RESULT**
+
+</div>
+
+A richer, animated visual immediately after the introduction—built around the actual QA Nexus workflow, with layered 3D-style geometry, moving energy paths, rotating orbital rings, data pulses, holographic test panels, and status indicators.
+
+> GitHub README files cannot run embedded GSAP JavaScript. This graphic uses animated SVG so its motion can be displayed as a README asset; it is inspired by GSAP-style motion design rather than claiming to execute a GSAP timeline.
 
 <details>
 <summary><strong>🧭 Explore this README</strong> · click to expand</summary>
