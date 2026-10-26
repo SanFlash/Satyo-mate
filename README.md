@@ -1,125 +1,189 @@
 <div align="center">
 
-<img src="docs/qa-nexus-banner.svg" alt="Animated QA Nexus banner — Learn, Practice, Build, Automate" width="100%" />
+<img src="docs/qa-nexus-banner.svg" alt="QA Nexus animated banner" width="100%" />
 
 <p>
-  <a href="https://github.com/SanFlash/Satyo-mate/actions"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/SanFlash/Satyo-mate/ci.yml?style=for-the-badge&label=build" /></a>
-  <a href="https://github.com/SanFlash/Satyo-mate/commits/main"><img alt="Latest commit" src="https://img.shields.io/github/last-commit/SanFlash/Satyo-mate?style=for-the-badge&color=24c8db" /></a>
-  <a href="https://github.com/SanFlash/Satyo-mate"><img alt="Repository size" src="https://img.shields.io/github/repo-size/SanFlash/Satyo-mate?style=for-the-badge&color=6c63ff" /></a>
-  <img alt="Next.js" src="https://img.shields.io/badge/Next.js-App_Router-black?style=for-the-badge&logo=next.js" />
-  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-Ready-3178c6?style=for-the-badge&logo=typescript&logoColor=white" />
+  <a href="https://github.com/SanFlash/Satyo-mate/actions"><img src="https://img.shields.io/github/actions/workflow/status/SanFlash/Satyo-mate/ci.yml?style=for-the-badge&logo=githubactions&logoColor=white&label=CI" alt="CI status" /></a>
+  <a href="https://github.com/SanFlash/Satyo-mate/commits/main"><img src="https://img.shields.io/github/last-commit/SanFlash/Satyo-mate?style=for-the-badge&logo=git&color=8b7cff" alt="Last commit" /></a>
+  <a href="https://github.com/SanFlash/Satyo-mate/issues"><img src="https://img.shields.io/github/issues/SanFlash/Satyo-mate?style=for-the-badge&logo=github&color=28c9df" alt="Open issues" /></a>
+  <a href="https://github.com/SanFlash/Satyo-mate/stargazers"><img src="https://img.shields.io/github/stars/SanFlash/Satyo-mate?style=for-the-badge&logo=github&color=7c6cff" alt="GitHub stars" /></a>
+  <img src="https://img.shields.io/badge/Next.js-App_Router-111111?style=for-the-badge&logo=next.js" alt="Next.js" />
+  <img src="https://img.shields.io/badge/TypeScript-Ready-3178c6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
 </p>
 
-### <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=19&duration=2600&pause=700&color=71DFFF&center=true&vCenter=true&width=700&lines=Learn+QA+Engineering;Design+better+test+cases;Build+maintainable+automation;Explore+Playwright+%26+Selenium" alt="Typing animation: Learn QA Engineering, Design better test cases, Build maintainable automation, Explore Playwright and Selenium" />
+### <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&duration=2400&pause=650&color=69E7FF&center=true&vCenter=true&width=760&lines=Learn+QA+Engineering;Design+smarter+test+cases;Build+maintainable+test+frameworks;Explore+Playwright+%26+Selenium;Make+quality+a+habit" alt="Animated typing headline" />
 
-**A hands-on workspace for learning QA engineering and building better automation.**
+**A hands-on lab for learning, designing, and preparing QA automation.**
 
-[Explore the code](https://github.com/SanFlash/Satyo-mate) · [Report a bug](https://github.com/SanFlash/Satyo-mate/issues) · [Request a feature](https://github.com/SanFlash/Satyo-mate/issues/new)
+[🚀 Explore the project](https://github.com/SanFlash/Satyo-mate) · [🐛 Report a bug](https://github.com/SanFlash/Satyo-mate/issues/new) · [💡 Suggest a feature](https://github.com/SanFlash/Satyo-mate/issues)
+
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:111A3C,50:3158A6,100:8B5CF6&height=3&section=header" width="100%" alt="" />
 
 </div>
 
----
+## ✦ The idea
 
-<details open>
-<summary><strong>🧭 Navigation — click to expand</strong></summary>
+QA Nexus turns QA learning into a practical workflow: **learn a concept → explore an example → design tests → generate a starter framework.**
 
-| Jump to | Jump to |
+> [!NOTE]
+> This is a learning and code-generation workspace. The hosted app does **not** execute real Playwright or Selenium browser sessions. Review and run generated code in your own local or CI environment.
+
+<details>
+<summary><strong>🧭 Explore this README</strong> · click to expand</summary>
+
+| Area | Jump in |
 |---|---|
-| [✨ Highlights](#-highlights) | [🖥️ Workspaces](#️-workspaces) |
-| [🛠️ Tech stack](#️-tech-stack) | [💻 Run locally](#-run-locally) |
-| [🧩 Interactive guides](#-interactive-guides) | [📁 Project structure](#-project-structure) |
-| [🚀 Deployment](#-deployment) | [👤 Creator](#-creator) |
-| [🗺️ Roadmap](#️-roadmap) | [🤝 Contributing](#-contributing) |
+| ✨ Product highlights | [Explore features](#-product-highlights) |
+| 🧰 Workspaces | [See the workspaces](#-your-qa-workbench) |
+| 🏗️ Workflow | [How it fits together](#-the-qa-nexus-workflow) |
+| 💻 Setup | [Run locally](#-run-it-locally) |
+| 🧪 Guides | [Use the tools](#-interactive-guides) |
+| 🗺️ Roadmap | [What comes next](#️-roadmap) |
+| 👤 Creator | [Meet the creator](#-creator) |
 
 </details>
 
-## ✨ Highlights
+## ✨ Product highlights
 
 <table>
 <tr>
 <td width="50%" valign="top">
 
-### 📚 Interactive learning
-- Curated curriculum with 42 starter lessons
-- Search, difficulty filters, bookmarks, and local progress
-- Interactive demos for forms, dropdowns, dialogs, tables, and tabs
-- Dark/light theme and responsive navigation
-- Keyboard command palette: `Ctrl+K` / `⌘K`
+<h3>📚 Learn by exploring</h3>
+
+<img src="https://img.shields.io/badge/42-starter_lessons-7868FF?style=flat-square" alt="42 starter lessons" />
+
+- Browse a curated QA automation curriculum.
+- Search topics, filter by difficulty, and bookmark lessons.
+- Explore local demos for forms, dropdowns, dialogs, tables, tabs, and more.
+- Track learning progress in your browser.
+- Open the command palette with `Ctrl+K` / `⌘K`.
 
 </td>
 <td width="50%" valign="top">
 
-### 🧪 Test Design Studio
-- Editable test cases with preconditions, steps, and expected results
-- P0–P3 priorities, statuses, search, and coverage map
-- JSON import/export and CSV export
-- Playwright/Selenium scaffold generation
+<h3>🧪 Design better tests</h3>
+
+<img src="https://img.shields.io/badge/JSON-CSV_exports-24B8D6?style=flat-square" alt="JSON and CSV exports" />
+
+- Create and edit test cases, steps, preconditions, and expected results.
+- Assign priorities and execution statuses.
+- Search your test inventory and review coverage.
+- Export a JSON backup or CSV test matrix.
+- Generate Playwright/Selenium starter snippets.
 
 </td>
-</tr><tr>
+</tr>
+<tr>
 <td width="50%" valign="top">
 
-### 🧱 Framework Builder
-- Searchable library of 50+ atomic actions
-- Select tool, language, project name, and base URL
-- Compose Page Object Model starter files
-- Preview, copy, and download generated files
+<h3>🧱 Assemble a framework</h3>
+
+<img src="https://img.shields.io/badge/POM-starter_builder-8B5CF6?style=flat-square" alt="POM starter builder" />
+
+- Select an automation tool and language.
+- Configure the project name and base URL.
+- Search a library of reusable actions.
+- Preview, copy, and download starter files.
 
 </td>
 <td width="50%" valign="top">
 
-### ⚡ Built for daily practice
-- Snippet switching and contextual tooltips
-- Workspace backup and restore
-- Desktop, tablet, and mobile responsive layout
-- Respects `prefers-reduced-motion`
+<h3>⚡ Designed for practice</h3>
+
+<img src="https://img.shields.io/badge/Responsive-Desktop_%2B_Mobile-16A878?style=flat-square" alt="Responsive design" />
+
+- Contextual tooltips and quick navigation.
+- Workspace backup and restore.
+- Responsive desktop, tablet, and mobile layouts.
+- Motion preferences that respect `prefers-reduced-motion`.
 
 </td>
 </tr>
 </table>
 
-## 🖥️ Workspaces
+## 🧰 Your QA workbench
 
-| Workspace | Purpose |
-|---|---|
-| **Learning dashboard** | Explore lessons, run local interactive demos, bookmark topics, and track local progress |
-| **Test Design Studio** — `/test-studio` | Organize test cases, set priorities, inspect coverage, and export plans |
-| **Framework Builder** — `/framework-builder` | Compose a starter Page Object Model framework and download generated files |
+<div align="center">
 
-## 🛠️ Tech stack
+| Workspace | Route | Use it to |
+|:--|:--:|:--|
+| **Learning Dashboard** | `/` | Study concepts, explore demos, and save progress |
+| **Test Design Studio** | `/test-studio` | Build test cases, assess planning coverage, and export |
+| **Framework Builder** | `/framework-builder` | Configure and download a starter Page Object Model |
 
-<p>
-<img alt="Next.js" src="https://img.shields.io/badge/Next.js-App_Router-111111?logo=next.js" />
-<img alt="React" src="https://img.shields.io/badge/React-UI-149eca?logo=react&logoColor=white" />
-<img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-Language-3178c6?logo=typescript&logoColor=white" />
-<img alt="Lucide" src="https://img.shields.io/badge/Lucide-Icons-f59e0b" />
-<img alt="CSS" src="https://img.shields.io/badge/CSS-Responsive-663399?logo=css3&logoColor=white" />
-</p>
+</div>
 
-## 💻 Run locally
+## 🏗️ The QA Nexus workflow
+
+<div align="center">
+
+<img src="docs/qa-nexus-feature-map.svg" alt="QA Nexus workflow diagram showing Learn, Design, Build and Practice" width="100%" />
+
+</div>
+
+```mermaid
+flowchart LR
+    A[Learn a QA concept] --> B[Explore the demo]
+    B --> C[Design test cases]
+    C --> D[Generate starter code]
+    D --> E[Review and run locally or in CI]
+    style A fill:#171f45,stroke:#7c83ff,color:#fff
+    style B fill:#102b42,stroke:#39d9ee,color:#fff
+    style C fill:#182e2a,stroke:#48d8a0,color:#fff
+    style D fill:#2a1c43,stroke:#b58aff,color:#fff
+    style E fill:#19253c,stroke:#9ebaff,color:#fff
+```
+
+## 🛠️ Built with
+
+<div align="center">
+
+<img src="https://skillicons.dev/icons?i=nextjs,react,ts,css,git,github&theme=dark" alt="Next.js, React, TypeScript, CSS, Git and GitHub" />
+
+<br/>
+
+<img src="https://img.shields.io/badge/Next.js-App_Router-111111?style=flat-square&logo=next.js" alt="Next.js App Router" />
+<img src="https://img.shields.io/badge/React-UI-149eca?style=flat-square&logo=react" alt="React" />
+<img src="https://img.shields.io/badge/TypeScript-Language-3178c6?style=flat-square&logo=typescript" alt="TypeScript" />
+<img src="https://img.shields.io/badge/Lucide-Icons-f59e0b?style=flat-square" alt="Lucide icons" />
+<img src="https://img.shields.io/badge/Custom_CSS-Responsive-663399?style=flat-square&logo=css3" alt="Custom CSS" />
+
+</div>
+
+## 💻 Run it locally
 
 <details open>
-<summary><strong>Step 1 — Clone and install</strong></summary>
+<summary><strong>01 · Clone the repository</strong></summary>
 
 ```bash
 git clone https://github.com/SanFlash/Satyo-mate.git
 cd Satyo-mate
+```
+
+</details>
+<details>
+<summary><strong>02 · Install dependencies</strong></summary>
+
+Requires Node.js 20+ and npm.
+
+```bash
 npm install
 ```
 
 </details>
 <details>
-<summary><strong>Step 2 — Start the development server</strong></summary>
+<summary><strong>03 · Start the development server</strong></summary>
 
 ```bash
 npm run dev
 ```
 
-Then open [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:3000](http://localhost:3000).
 
 </details>
 <details>
-<summary><strong>Step 3 — Validate a production build</strong></summary>
+<summary><strong>04 · Validate before contributing</strong></summary>
 
 ```bash
 npm run typecheck
@@ -128,49 +192,48 @@ npm run build
 
 </details>
 
-> [!IMPORTANT]
-> QA Nexus teaches and generates starter code. The hosted interface does **not** execute real browser automation scripts. Adapt generated examples and run them in your own local or CI environment.
-
-## 🧩 Interactive guides
+## 🧪 Interactive guides
 
 <details>
-<summary><strong>📖 Learning dashboard</strong></summary>
+<summary><strong>📘 Learning Dashboard — learn and revisit</strong></summary>
 
 1. Search or filter the curriculum.
-2. Select a lesson to explore its guide, code, and local demo.
+2. Select a lesson to read the guide and explore the local demo.
 3. Bookmark topics you want to revisit.
-4. Use `Ctrl+K` or `⌘K` to open the command palette.
-5. Use workspace backup/restore to transfer local learning progress.
+4. Use `Ctrl+K` / `⌘K` for quick navigation.
+5. Export a workspace backup when you want to preserve or transfer your local progress.
 
 Progress and bookmarks are stored in the current browser unless exported.
 
 </details>
+
 <details>
-<summary><strong>🧪 Test Design Studio</strong></summary>
+<summary><strong>🧪 Test Design Studio — plan your coverage</strong></summary>
 
 1. Open `/test-studio`.
-2. Create or edit test cases, preconditions, steps, expected results, tags, priority, and status.
-3. Search and filter the inventory.
-4. Review the coverage map as a planning aid.
-5. Export JSON/CSV or generate a starter code scaffold.
+2. Create test cases with preconditions, steps, expected results, tags, priority, and status.
+3. Search and filter the test inventory.
+4. Use the coverage map as a planning aid.
+5. Export JSON/CSV or generate a starter scaffold.
 
 Coverage is a planning signal, not proof of full requirements traceability or complete application testing.
 
 </details>
+
 <details>
-<summary><strong>🧱 Framework Builder</strong></summary>
+<summary><strong>🧱 Framework Builder — assemble starter files</strong></summary>
 
 1. Open `/framework-builder`.
-2. Select tool and programming language.
-3. Enter project name and target base URL.
+2. Select an automation tool and programming language.
+3. Enter a project name and target base URL.
 4. Search and select reusable actions.
 5. Preview, copy, or download the generated Page Object Model scaffold.
 
-Before execution, add real selectors, fixtures, test data, assertions, scenario sequencing, and missing extension-point implementations.
+Before execution, add real selectors, fixtures, test data, assertions, scenario sequencing, and any missing extension-point implementations.
 
 </details>
 
-## 📁 Project structure
+## 📁 Project map
 
 ```text
 src/
@@ -187,36 +250,21 @@ src/
     ├── catalog.ts
     └── generator.ts
 docs/
-└── qa-nexus-banner.svg
+├── qa-nexus-banner.svg
+└── qa-nexus-feature-map.svg
 public/
 └── qa-nexus-logo.svg
 ```
 
 ## 🚀 Deployment
 
-1. Import [the repository](https://github.com/SanFlash/Satyo-mate) into Vercel.
-2. Set the project root to the repository root.
+1. Import [the GitHub repository](https://github.com/SanFlash/Satyo-mate) into Vercel.
+2. Set the root directory to the repository root.
 3. Select the Next.js framework preset.
-4. Use the default build command, `next build`.
-5. Deploy the production branch.
+4. Keep the default build command, `next build`.
+5. Deploy the production branch and verify the deployment status.
 
-The anonymous learning starter does not require environment variables. Confirm Git integration and production status in your Vercel project.
-
-## 👤 Creator
-
-<div align="center">
-
-<img src="public/qa-nexus-logo.svg" alt="QA Nexus logo" width="96" />
-
-### Satyendra Kumar Namdeo
-
-**Creator of QA Nexus**
-
-Building practical tools for QA learning, test design, and automation engineering.
-
-[GitHub profile](https://github.com/SanFlash) · [Project repository](https://github.com/SanFlash/Satyo-mate)
-
-</div>
+The current learning starter does not require environment variables. Confirm the actual build status in GitHub Actions and Vercel.
 
 ## 🗺️ Roadmap
 
@@ -224,31 +272,55 @@ Building practical tools for QA learning, test design, and automation engineerin
 - [ ] Requirement-to-test traceability IDs
 - [ ] Execution history and richer report exports
 - [ ] More curated end-to-end scenarios
-- [ ] Unit tests for generated templates and deterministic demo flows
+- [ ] Unit tests for generated templates and demo flows
 - [ ] Optional cloud-synced progress and saved framework recipes
 
-## 🤝 Contributing
+## 🤝 Contribute to QA Nexus
 
-1. Open an [issue](https://github.com/SanFlash/Satyo-mate/issues) describing the problem or idea.
-2. Create a focused branch for your change.
+Found a bug or have an idea?
+
+<p align="center">
+  <a href="https://github.com/SanFlash/Satyo-mate/issues/new"><img src="https://img.shields.io/badge/Report_a_bug-Open_issue-F97373?style=for-the-badge&logo=github" alt="Report a bug" /></a>
+  <a href="https://github.com/SanFlash/Satyo-mate/issues"><img src="https://img.shields.io/badge/Share_an_idea-Feature_request-7C6CFF?style=for-the-badge&logo=github" alt="Suggest a feature" /></a>
+</p>
+
+1. Open an issue with context and reproduction steps.
+2. Create a focused branch.
 3. Run `npm run typecheck` and `npm run build`.
-4. Open a pull request with a clear summary and testing notes.
+4. Open a pull request with a clear summary and test notes.
 
-## 📜 Project boundaries
+## 👤 Creator
+
+<div align="center">
+
+<img src="public/qa-nexus-logo.svg" alt="QA Nexus logo" width="100" />
+
+### **Satyendra Kumar Namdeo**
+
+Creator of QA Nexus · QA learning · Test design · Automation engineering
+
+<a href="https://github.com/SanFlash"><img src="https://img.shields.io/badge/GitHub-SanFlash-171717?style=for-the-badge&logo=github" alt="Creator GitHub profile" /></a>
+<a href="https://github.com/SanFlash/Satyo-mate"><img src="https://img.shields.io/badge/Explore-QA_Nexus-6C63FF?style=for-the-badge&logo=github" alt="Explore QA Nexus" /></a>
+
+</div>
+
+## ⚠️ Honest project boundaries
 
 - Generated templates are starter examples, not guaranteed production-ready tests.
 - Selectors and URLs must match the target application.
-- Real Playwright/Selenium execution should happen locally, in CI, or in a separately isolated browser runner.
-- Do not run arbitrary generated code inside the user-facing page or an unrestricted serverless function.
+- Run real Playwright/Selenium execution locally, in CI, or in a separately isolated browser runner.
+- Do not execute arbitrary generated code inside the user-facing page or an unrestricted serverless function.
 
 ---
 
 <div align="center">
 
-### QA Nexus · Learn · Practice · Build · Automate
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0B1028,50:3158A6,100:8B5CF6&height=130&section=footer&text=Keep%20Testing.%20Keep%20Building.&fontSize=25&fontColor=FFFFFF&animation=fadeIn" alt="Keep testing. Keep building." width="100%" />
 
-**Made by Satyendra Kumar Namdeo**
+**QA Nexus** · Learn · Practice · Build · Automate
 
-<a href="https://github.com/SanFlash/Satyo-mate"><img alt="Back to top" src="https://img.shields.io/badge/⬆_Back_to_top-QA_Nexus-6c63ff?style=for-the-badge" /></a>
+Made by **Satyendra Kumar Namdeo**
+
+[⬆ Back to repository](https://github.com/SanFlash/Satyo-mate)
 
 </div>
