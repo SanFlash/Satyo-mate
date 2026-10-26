@@ -43,6 +43,25 @@ QA Nexus turns QA learning into a practical workflow: **learn a concept → expl
 
 </details>
 
+## 🌌 A closer look — the QA Nexus 3D lab
+
+<div align="center">
+
+<img src="docs/qa-nexus-3d-lab.svg" alt="Animated isometric QA Nexus lab with a floating test dashboard, automation cube, glowing workflow paths, and Playwright and Selenium tool panels" width="100%" />
+
+**One workspace. Four stages. A clearer path from learning to automation.**
+
+<table>
+<tr>
+<td align="center" width="25%"><strong>01 · LEARN</strong><br/>Explore concepts and examples</td>
+<td align="center" width="25%"><strong>02 · DESIGN</strong><br/>Turn requirements into test cases</td>
+<td align="center" width="25%"><strong>03 · BUILD</strong><br/>Generate reusable starter files</td>
+<td align="center" width="25%"><strong>04 · PRACTICE</strong><br/>Review and run tests in your environment</td>
+</tr>
+</table>
+
+</div>
+
 ## ✨ Product highlights
 
 <table>
