@@ -28,7 +28,7 @@ QA Nexus, created by **Satyendra Kumar Namdeo**, is a responsive learning worksp
 
 - Product name: QA Nexus
 - Tagline: Learn · Practice · Build · Automate
-- Creator: Satyendra Kumar Namdeo
+- Creator: Satyendra Kumar Namdeo\n- The creator name is shown in the application header and workspace branding.
 - Logo and animated branded intro are included in the application.
 
 ## Stack

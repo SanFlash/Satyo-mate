@@ -366,3 +366,14 @@ pre,code{overflow-wrap:anywhere;}
   .stats-grid{grid-template-columns:minmax(0,1fr);}
   .framework-config-grid{grid-template-columns:minmax(0,1fr);}
 }
+
+
+/* Visible creator attribution across QA Nexus workspaces */
+.creator-credit{display:flex;align-items:center;gap:4px;color:var(--muted);font-size:10px;white-space:nowrap}
+.creator-credit strong{color:var(--text2);font-weight:600}
+.framework-credit{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.framework-credit i{height:14px;width:1px;background:#29303c;display:inline-block}
+.studio-brand small{letter-spacing:.55px}
+@media(max-width:980px){.creator-credit{display:none}}
+@media(max-width:650px){.brand small{font-size:6px;letter-spacing:.15px}.studio-brand small{font-size:7px;letter-spacing:0}.framework-credit{font-size:10px}}
+@media(max-width:390px){.brand small{font-size:5px;letter-spacing:0}.framework-credit{display:none}}

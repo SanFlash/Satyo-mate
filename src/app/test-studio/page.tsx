@@ -112,7 +112,7 @@ export default function TestStudioPage() {
  return <main className="studio-page">
   <header className="studio-topbar">
    <Link href="/" className="studio-back"><ArrowLeft size={15}/> Workspace</Link>
-   <div className="studio-brand"><span className="studio-brand-icon"><ShieldCheck size={18}/></span><div><strong>Test Design Studio</strong><small>PLAN · COVER · EXPORT</small></div></div>
+   <div className="studio-brand"><span className="studio-brand-icon"><ShieldCheck size={18}/></span><div><strong>Test Design Studio</strong><small>BY SATYENDRA KUMAR NAMDEO</small></div></div>
    <div className="studio-top-actions">
     <button className="studio-button quiet" onClick={()=>importRef.current?.click()}><Upload size={14}/> Import JSON</button>
     <input ref={importRef} type="file" accept=".json,application/json" hidden onChange={e=>void importJson(e.target.files?.[0])}/>
